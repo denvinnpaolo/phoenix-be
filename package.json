@@ -1,0 +1,29 @@
+{
+  "name": "phoenix-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.21.12",
+    "nodemon": "^2.0.6",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denvinnpaolo/phoenix-be.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denvinnpaolo/phoenix-be/issues"
+  },
+  "homepage": "https://github.com/denvinnpaolo/phoenix-be#readme"
+}
