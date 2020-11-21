@@ -11,8 +11,11 @@ exports.up = function(knex) {
         })
         .createTable('waste_producers', tbl => {
             tbl.increments();
+            tbl.string('type').notNullable();
             tbl.string('name').notNullable();
             tbl.string('address').notNullable();
+            tbl.string('city').notNullable();
+            tbl.integer('zipcode').notNullable();
             tbl.integer('phone').notNullable();
             tbl.string('email').unique().notNullable();
             tbl.string('password').notNullable();
@@ -21,8 +24,11 @@ exports.up = function(knex) {
         })
         .createTable('waste_transformers', tbl => {
             tbl.increments();
+            tbl.string('type').notNullable();
             tbl.string('name').notNullable();
             tbl.string('address').notNullable();
+            tbl.string('city').notNullable();
+            tbl.integer('zipcode').notNullable();
             tbl.integer('phone').notNullable();
             tbl.string('email').unique().notNullable();
             tbl.string('password').notNullable();
@@ -33,10 +39,9 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return( knex.schema
+    return (knex.schema
         .dropTableIfExists('users')
         .dropTableIfExists('waste_producers')
         .dropTableIfExists('waste_transformers')
-        .dropTableIfExists('pick_up')
     );
 };

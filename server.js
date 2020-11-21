@@ -5,7 +5,7 @@ const express = require('express');
 const serverConfig = require('./middleware/ConfigAPI.js')
 
 // routes
-const userRoutes = require('./api/users/userRoutes.js')
+const userRoutes = require('./api/users/routes.js')
 
 // server starts
 const server = express();
