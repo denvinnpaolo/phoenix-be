@@ -10,10 +10,12 @@
     "helmet": "^4.2.0",
     "knex": "^0.21.12",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.6",
-    "pg": "^8.5.1"
+    "pg": "^8.5.1",
+    "sqlite3": "^5.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js",
