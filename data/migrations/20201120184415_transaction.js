@@ -9,13 +9,13 @@ exports.up = function(knex) {
         tbl.integer('producer_id')
             .unsigned()
             .references('id')
-            .inTable('waste_producer')
+            .inTable('orgs')
             .notNullable();
 
         tbl.integer('transformer_id')
             .unsigned()
             .references('id')
-            .inTable('waste_transformer')
+            .inTable('orgs')
             .notNullable();
 
         tbl.string('producer_emp')
@@ -38,13 +38,13 @@ exports.up = function(knex) {
         tbl.integer('producer_id')
             .unsigned()
             .references('id')
-            .inTable('waste_producer')
+            .inTable('orgs')
             .notNullable();
 
         tbl.integer('transformer_id')
             .unsigned()
             .references('id')
-            .inTable('waste_transformer')
+            .inTable('orgs')
             .notNullable();
 
         tbl.string('producer_emp')

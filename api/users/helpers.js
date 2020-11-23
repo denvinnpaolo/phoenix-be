@@ -1,39 +1,50 @@
 const db = require('../../data/KnexConfig.js');
 
-const searchByEmail = email => {
-    return db('users')
-        .join('waste_transformers')
-        .join('waste_producers')
-        .where(email)
+const GetByEmail = email=> {
+    return db('users').where(email)
 };
+
+const GetAllUsers = email => {
+    console.log(email)
+    return db('users')
+}
 
 const searchByName = name => {
     return db('users')
-        .join('waste_transformers')
-        .join('waste_producers')
+        .join('orgs')
         .where(name)
 };
 
 const searchByCity = name => {
-    return db('waste_transformers')
-        .join('waste_producers')
+    return db('orgs')
         .orderBy('id', 'asc')
         .where(city)
 };
 
 const fetchOrg = filter => {
-    return db('waste_transformers')
-        .join('waste_producers')
+    return db('orgs')
+        .select(
+            'type',
+            'name',
+            'email',
+            'phone',
+            'address',
+            'city',
+            'zipcode',
+            'about',
+            'url'
+        )
         .where(filter)
 };
 
 const fetchUser = filter => {
+    console.log(filter)
     return db('users').where(filter)
 };
 
 const addOrg = orgObj => {
     return (
-        db(`${orgObj.type}`)
+        db('orgs')
             .insert(orgObj, 'id')
             .then(([id]) => {
                 return fetchOrg({ id })
@@ -42,10 +53,11 @@ const addOrg = orgObj => {
 };
 
 const addUser = userObj => {
+    console.log(userObj)
     return (
         db('users')
             .insert(userObj, 'id')
-            .then([id] => {
+            .then(([id] )=> {
                 return fetchUser({ id })
             })
     )
@@ -57,6 +69,7 @@ module.exports = {
     fetchOrg,
     fetchUser,
     searchByCity,
-    searchByEmail,
+    GetByEmail,
+    GetAllUsers,
     searchByName
 }
