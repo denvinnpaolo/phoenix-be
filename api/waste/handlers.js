@@ -16,9 +16,8 @@ const getAllAvailable = (req, res) => {
 }
 
 const AddWaste = (req, res) => {
-    console.log(req.body)
     const waste = {
-        type: req.type,
+        type: req.body.type,
         producer_id: req.body.producer_id,
         date: req.body.date,
         exp: req.body.exp

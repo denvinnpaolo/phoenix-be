@@ -25,10 +25,10 @@ const fetchPickUps = () => {
 }
 
 const addWaste = wasteObj => {
-    console.log(wasteObj)
-    return db('pick_up')
+    // console.log(wasteObj)
+    return db('available')
         .insert(wasteObj)
-        .then(([id]) => {
+        .then((id) => {
             return getAllAvailable({ id })
         })
 }
