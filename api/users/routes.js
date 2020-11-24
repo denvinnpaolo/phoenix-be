@@ -4,10 +4,12 @@ const router = express.Router();
 const {
     register,
     login,
-    allUsers
+    allUsers, 
+    allOrgs
 } = require('./handlers.js');
 
-router.get('/', allUsers)
+router.get('/users', allUsers)
+router.get('/orgs', allOrgs)
 router.post('/login', login);
 router.post('/register', register);
 

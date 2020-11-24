@@ -1,6 +1,13 @@
 
 exports.up = function(knex) {
   return (knex.schema
+    .createTable('available', tbl => {
+        tbl.increments();
+        tbl.string('type').notNullable();
+        tbl.integer('producer_id').notNullable();
+        tbl.string('date').notNullable();
+        tbl.string('exp').notNullable();
+    })
     .createTable('pick_up', tbl => {
         tbl.increments();
         tbl.string('date').notNullable();
@@ -31,7 +38,7 @@ exports.up = function(knex) {
             .notNullable();
     })
     .createTable('completed', tbl => {
-        tbl.integer('id');
+        tbl.increments();
         tbl.string('date').notNullable();
         tbl.string('type').notNullable();
         tbl.string('description').notNullable();
@@ -60,7 +67,7 @@ exports.up = function(knex) {
             .notNullable();
     })
     .createTable('archive', tbl => {
-        tbl.integer('id');
+        tbl.increments();
         tbl.string('date').notNullable();
         tbl.string('type').notNullable();
         tbl.string('description').notNullable();
@@ -93,6 +100,7 @@ exports.up = function(knex) {
 
 exports.down = function(knex) {
   return (knex.schema
+    .dropTableIfExists('available')
     .dropTableIfExists('pick_up')
     .dropTableIfExists('completed')
     .dropTableIfExists('archive')

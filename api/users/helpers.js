@@ -4,9 +4,12 @@ const GetByEmail = email=> {
     return db('users').where(email)
 };
 
-const GetAllUsers = email => {
-    console.log(email)
+const GetAllUsers = () => {
     return db('users')
+}
+
+const GetAllOrgs = () => {
+    return db('orgs')
 }
 
 const searchByName = name => {
@@ -24,6 +27,7 @@ const searchByCity = name => {
 const fetchOrg = filter => {
     return db('orgs')
         .select(
+            'id',
             'type',
             'name',
             'email',
@@ -38,8 +42,18 @@ const fetchOrg = filter => {
 };
 
 const fetchUser = filter => {
-    console.log(filter)
-    return db('users').where(filter)
+    return db('users')
+        .select(
+            'id',
+            'type',
+            'email',
+            'name',
+            'job',
+            'phone',
+            'company_id'
+
+        )
+        .where(filter)
 };
 
 const addOrg = orgObj => {
@@ -53,11 +67,10 @@ const addOrg = orgObj => {
 };
 
 const addUser = userObj => {
-    console.log(userObj)
     return (
         db('users')
             .insert(userObj, 'id')
-            .then(([id] )=> {
+            .then(( [id] )=> {
                 return fetchUser({ id })
             })
     )
@@ -71,5 +84,6 @@ module.exports = {
     searchByCity,
     GetByEmail,
     GetAllUsers,
+    GetAllOrgs,
     searchByName
 }

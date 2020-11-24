@@ -1,11 +1,7 @@
-const Helper = require('./helpers.js');
+const Helper = require('./Helpers.js');
 const hash = require('../../utils/hasher.js');
 const compare = require('../../utils/compareHash.js');
 const generateToken = require('../../utils/token.js');
-const { token } = require('morgan');
-
-const bcrypt = require('bcryptjs');
-
 
 const register = (req, res) => {
     let password = hash(req.body.password)
@@ -63,30 +59,17 @@ const register = (req, res) => {
     }
 }
 
-const allUsers = (req, res) => {
-    Helper.GetAllUsers()
-        .then(users => {
-            res.status(200).json({
-                users: users
-            })
-        })
-        .catch(err => {
-            res.status(500).json({
-                err: err
-            })
-        })
-}
-
 const login = (req, res) => {
     const { email, password } = req.body;
     Helper.GetByEmail({email})
     .then(([user]) => {
-        const bool = bcrypt.compareSync(password, user.password)
-        if(user && bool){
-            const token = generateToken(user)
+        const bool = compare(password, user.password);
 
+        if(user && bool){
             Helper.fetchUser({email})
                 .then(([user]) => {
+                    const token = generateToken(user)
+
                     res.status(200).json({
                         token:token
                     })
@@ -106,32 +89,39 @@ const login = (req, res) => {
         })
     })
 
+};
+
+const allUsers = (req, res) => {
+    Helper.GetAllUsers()
+        .then((users) => {
+            res.status(200).json({
+                users: users
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                err: err
+            })
+        })
+};
+
+const allOrgs = (req, res) => {
+    Helper.GetAllOrgs()
+        .then((orgs) => {
+            res.status(200).json({
+                orgs: orgs
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                err: err
+            })
+        })
 }
 
-// const login = (req, res) => {
-//     const { email, password } = req.body;
-
-//     Helper.GetByEmail({ email })
-//         .then(x => {
-//             const bool = compare(password, user.password);
-//             if(x && bool){
-//                 token = generateToken(x)
-
-//                 Helper.fetchOrg({email})
-//                     .then(user => {
-//                         res.status(200).json({token: token })
-//                     })
-//                     .catch(err => {
-//                         res.status(500).json({ messages: err })
-//                     })
-//             } else {
-//                 res.status(400).json({ message: 'invalid credentials'})
-//             }
-//         })
-//         .catch(err => res.status(500).json({ err: err, iam: "here" }))
-// }
 module.exports = {
     register,
     login,
-    allUsers
+    allUsers,
+    allOrgs
 }
