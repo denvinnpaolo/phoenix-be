@@ -1,7 +1,11 @@
 const db = require('../../data/KnexConfig.js');
 
-const GetByEmail = email=> {
+const GetByUserEmail = email=> {
     return db('users').where(email)
+};
+
+const GetByOrgEmail = email=> {
+    return db('orgs').where(email)
 };
 
 const GetAllUsers = () => {
@@ -82,7 +86,8 @@ module.exports = {
     fetchOrg,
     fetchUser,
     searchByCity,
-    GetByEmail,
+    GetByUserEmail,
+    GetByOrgEmail,
     GetAllUsers,
     GetAllOrgs,
     searchByName

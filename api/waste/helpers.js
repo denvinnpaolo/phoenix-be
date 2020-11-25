@@ -28,10 +28,6 @@ const getAllPickUps = () => {
     return db('pick_up')
 };
 
-const getAllProducerCompleted = (id) => {
-    return db('completed').where(id)
-} 
-
 
 // ADDING DATA
 const addWaste = wasteObj => {
@@ -52,7 +48,11 @@ const availToPickUp = wasteObj => {
 };  
 
 const pickUpToComplete = (wasteObj) => {
-    //add waste object to completed then  delete from 'pick_up' database.
+    return db('completed')
+    .insert(wasteObj)
+    .then(([id]) => {
+        return searchCompleted({ id }) 
+    })
 };
 
 
