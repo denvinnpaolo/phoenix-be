@@ -4,4 +4,4 @@ const config = require('../knexfile.js')
 
 const env = secret.env
 
-module.exports = knex(config.development)
+module.exports = knex(config[env])
