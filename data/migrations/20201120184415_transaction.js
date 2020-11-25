@@ -17,8 +17,8 @@ exports.up = function(knex) {
         tbl.string('description').notNullable();
         tbl.integer('producer_id').notNullable();
         tbl.integer('transformer_id').notNullable();
-        tbl.string('producer_emp').notNullable();
-        tbl.string('transformer_emp').notNullable();
+        tbl.integer('producer_emp').notNullable();
+        tbl.integer('transformer_emp').notNullable();
 
     })
     .createTable('completed', tbl => {
@@ -30,8 +30,8 @@ exports.up = function(knex) {
         tbl.string('description').notNullable();
         tbl.integer('producer_id').notNullable();
         tbl.integer('transformer_id').notNullable();
-        tbl.string('producer_emp').notNullable();
-        tbl.string('transformer_emp').notNullable();
+        tbl.integer('producer_emp').notNullable();
+        tbl.integer('transformer_emp').notNullable();
 
     })
     .createTable('archive', tbl => {
@@ -43,8 +43,8 @@ exports.up = function(knex) {
         tbl.string('description').notNullable();
         tbl.integer('producer_id').notNullable();
         tbl.integer('transformer_id').notNullable();
-        tbl.string('producer_emp').notNullable();
-        tbl.string('transformer_emp').notNullable();
+        tbl.integer('producer_emp').notNullable();
+        tbl.integer('transformer_emp').notNullable();
 
     })
   )

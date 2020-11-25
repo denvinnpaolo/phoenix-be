@@ -5,7 +5,7 @@ const {
     addWaste,
     getAllAvailable, 
     getAllPickUps,
-    movetToComplete,
+    moveToComplete,
     moveToPickUp,
     searchBy
 } = require('./handlers.js');
@@ -17,7 +17,7 @@ router.get('/pick-ups', getAllPickUps)
 
 router.post('/add-waste', addWaste)
 router.post('/to-pick-up', moveToPickUp)
-router.post('to-complete', movetToComplete)
+router.post('/to-complete', moveToComplete)
 
 router.get('/search-by', searchBy)
 

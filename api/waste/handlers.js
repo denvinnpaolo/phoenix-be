@@ -37,7 +37,7 @@ const addWaste = (req, res) => {
         exp: req.body.exp
     }
     Helper.addWaste(waste)
-        .then(waste => {
+        .then(([waste]) => {
             res.status(201).json({
                 available: waste
             })
@@ -86,7 +86,8 @@ const moveToPickUp = (req, res) => {
         })
 };
 
-const movetToComplete = (req, res) => {
+const moveToComplete = (req, res) => {
+    console.log(req.body)
     const { id } = req.body;
     const waste = {
         type: req.body.type,
@@ -124,9 +125,9 @@ const movetToComplete = (req, res) => {
 };
 
 const searchBy = (req, res) => {
-    const { type } = req.body;
 
-    Helper.searchWaste({type})
+
+    Helper.searchWaste(req.body)
         .then(wasteList => {
             res.status(200).json({
                 available: wasteList
@@ -145,6 +146,6 @@ module.exports = {
     getAllPickUps,
     addWaste,
     moveToPickUp,
-    movetToComplete,
+    moveToComplete,
     searchBy
 }

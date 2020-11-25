@@ -3,6 +3,7 @@ const db = require('../../data/KnexConfig.js');
 
 // SEARCH DATA
 const searchWaste = filter => {
+    console.log(filter)
     return db('available').where(filter);
 };
 
@@ -34,7 +35,7 @@ const addWaste = wasteObj => {
     return db('available')
         .insert(wasteObj)
         .then((id) => {
-            return getAllAvailable({ id })
+            return searchWaste({ id })
         })
 };
 
@@ -48,6 +49,7 @@ const availToPickUp = wasteObj => {
 };  
 
 const pickUpToComplete = (wasteObj) => {
+    console.log(wasteObj)
     return db('completed')
     .insert(wasteObj)
     .then(([id]) => {
