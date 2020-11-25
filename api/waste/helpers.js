@@ -2,7 +2,7 @@ const db = require('../../data/KnexConfig.js');
 
 
 // SEARCH DATA
-const searchWaste = filter => {
+const searchAvailable = filter => {
     console.log(filter)
     return db('available').where(filter);
 };
@@ -69,7 +69,7 @@ const deletePickUp = (id) => {
 
 module.exports ={
     
-    searchWaste,
+    searchAvailable,
     searchCompleted,
     searchArchive,
     searchPickUp,

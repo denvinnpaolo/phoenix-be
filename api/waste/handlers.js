@@ -126,7 +126,6 @@ const moveToComplete = (req, res) => {
 
 const searchBy = (req, res) => {
 
-
     Helper.searchWaste(req.body)
         .then(wasteList => {
             res.status(200).json({
@@ -138,12 +137,39 @@ const searchBy = (req, res) => {
                 message: err
             })
         })
-}
+};
+
+const getAvailandComp = (req, res) => {
+    const { id } = req.body;
+    let posts = {
+        available: [],
+        complete: []
+    }
+    Helper.searchAvailable({id})
+        .then(avails => {
+            posts.available = avails;
+            Helper.searchCompleted({id})
+                .then(comps => {
+                    posts.complete = comps
+                    
+                    res.status(200).json({
+                        posts: posts
+                    })
+                })
+                .catch(err => {
+                    message: err
+                })
+        })
+        .catch(err => {
+            message: err
+        })
+};
 
 
 module.exports = {
     getAllAvailable,
     getAllPickUps,
+    getAvailandComp,
     addWaste,
     moveToPickUp,
     moveToComplete,
