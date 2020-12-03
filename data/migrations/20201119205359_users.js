@@ -4,25 +4,16 @@ exports.up = function(knex) {
         .createTable('users', tbl => {
             tbl.increments();
             tbl.string('type').notNullable();
-            tbl.string('email', 128).unique().notNullable();
+            tbl.string('company_name').notNullable();
+            tbl.integer('company_size').notNullable();
+            tbl.string('website');
+            tbl.string('company_address');
+            tbl.string('company_phone');
             tbl.string('name');
-            tbl.string('password', 128).notNullable();
-            tbl.string('job').notNullable();
+            tbl.string('job_title').notNullable();
             tbl.string('phone').notNullable();
-            tbl.integer('company_id').notNullable();
-        })
-        .createTable('orgs', tbl => {
-            tbl.increments();
-            tbl.string('type').notNullable();
-            tbl.string('name').notNullable();
-            tbl.string('address').notNullable();
-            tbl.string('city').notNullable();
-            tbl.integer('zipcode').notNullable();
-            tbl.integer('phone').notNullable();
-            tbl.string('email').unique().notNullable();
-            tbl.string('password').notNullable();
-            tbl.string('url');
-            tbl.string('about', 500);
+            tbl.string('email', 128).unique().notNullable();
+            tbl.string('password', 128).notNullable();
         })
     )
 };
@@ -30,6 +21,5 @@ exports.up = function(knex) {
 exports.down = function(knex) {
     return (knex.schema
         .dropTableIfExists('users')
-        .dropTableIfExists('orgs')
     );
 };

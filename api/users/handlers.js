@@ -5,119 +5,70 @@ const generateToken = require('../../utils/token.js');
 
 const register = (req, res) => {
     let password = hash(req.body.password)
+    console.log(req.body)
 
-    if(req.body.type !== 'user'){
-        const org = {
-            type: req.body.type,
-            name: req.body.name,
-            email: req.body.email,
-            password: password,
-            phone: req.body.phone,
-            url: req.body.url,
-            address: req.body.address,
-            city: req.body.city,
-            zipcode: req.body.zipcode,
-            about: req.body.about
-        }
+    const user = {
+        type: req.body.type,
+        company_name: req.body.company_name,
+        company_size: req.body.company_size,
+        website: req.body.website,
+        company_address: req.body.company_address,
+        company_phone: req.body.phone,
+        name: req.body.name,
+        job_title: req.body.job_title,
+        phone: req.body.phone,
+        email: req.body.email,
+        password: password
+    };
 
-        Helper.addOrg(org)
-            .then(([org])=> {
-                const token = generateToken(org);
-
-                res.status(201).json({
-                    token: token
-                })
+    console.log(user)
+    Helper.addUser(user)
+        .then(([user]) => {
+            const token = generateToken(user);
+            console.log(user)
+            
+            res.status(201).json({
+                token: token
             })
-            .catch(err => {
-                res.status(500).json(err);
-            })
 
-    } else if(req.body.type === 'users'){
-
-        const user = {
-            type: req.body.type,
-            email: req.body.email,
-            name: req.body.name,
-            password: password,
-            job: req.body.job,
-            phone: req.body.phone,
-            company_id: req.body.company_id
-        }
-
-        Helper.addUser(user)
-            .then(([user]) => {
-                const token = generateToken(user);
-                
-                res.status(201).json({
-                    token: token
-                })
-
-            })
-            .catch(err => {
-                res.status(500).json({message: err})
-            })
-    }
+        })
+        .catch(err => {
+            res.status(500).json({message: err})
+        })
 }
 
+
 const login = (req, res) => {
-    const { type, email, password } = req.body;
-    if(type !== 'user') {
-        Helper.GetByOrgEmail({email})
-        .then(([org]) => {
+    const { email, password } = req.body;
 
-            // check to see if password matches w/ the one in the database
-            const bool = compare(password, org.password);
+    Helper.GetByUserEmail({email})
+    .then(([user]) => {
 
-            if(org && bool){
-                Helper.fetchOrg({email})
-                    .then(([org]) => {
-                        const token = generateToken(org)
+        // check to see if password matches w/ the one in the database
+        const bool = compare(password, user.password);
 
-                        res.status(200).json({
-                            token:token
-                        })
+        if(user && bool){
+            Helper.fetchUser({email})
+                .then(([user]) => {
+                    const token = generateToken(user)
+
+                    res.status(200).json({
+                        token:token,
+                        userdata: user
                     })
-                    .catch(err => {
-                        res.status(400).json({
-                            message: err
-                        })
+                })
+                .catch(err => {
+                    res.status(400).json({
+                        message: err
                     })
-            }
-        })  
-        .catch(err => {
-            res.status(500).json({
-                message: err
-            })
-        }) 
-    } else {
-        Helper.GetByUserEmail({email})
-        .then(([user]) => {
-
-            // check to see if password matches w/ the one in the database
-            const bool = compare(password, user.password);
-
-            if(user && bool){
-                Helper.fetchUser({email})
-                    .then(([user]) => {
-                        const token = generateToken(user)
-
-                        res.status(200).json({
-                            token:token
-                        })
-                    })
-                    .catch(err => {
-                        res.status(400).json({
-                            message: err
-                        })
-                    })
-            }
-        })  
-        .catch(err => {
-            res.status(500).json({
-                message: err
-            })
+                })
+        }
+    })  
+    .catch(err => {
+        res.status(500).json({
+            message: err
         })
-    }
+    })
 };
 
 const allUsers = (req, res) => {
@@ -134,23 +85,9 @@ const allUsers = (req, res) => {
         })
 };
 
-const allOrgs = (req, res) => {
-    Helper.GetAllOrgs()
-        .then((orgs) => {
-            res.status(200).json({
-                orgs: orgs
-            })
-        })
-        .catch(err => {
-            res.status(500).json({
-                err: err
-            })
-        })
-}
 
 module.exports = {
     register,
     login,
     allUsers,
-    allOrgs
 }

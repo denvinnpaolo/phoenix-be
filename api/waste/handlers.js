@@ -33,6 +33,9 @@ const addWaste = (req, res) => {
     const waste = {
         type: req.body.type,
         producer_id: req.body.producer_id,
+        address: req.body.address,
+        description: req.body.description,
+        time_available: req.body.time_available,
         date_posted: req.body.date_posted,
         exp: req.body.exp
     }
@@ -53,14 +56,12 @@ const moveToPickUp = (req, res) => {
     const { id } = req.body;
     const waste = {
         type: req.body.type,
-        description: req.body.description,
         producer_id: req.body.producer_id,
-        producer_emp: req.body.producer_emp,
-        transformer_id: req.body.transformer_id,
-        transformer_emp: req.body.transformer_emp,
+        address: req.body.address,
+        description: req.body.description,
+        time_available: req.body.time_available,
         date_posted: req.body.date_posted,
-        exp: req.body.exp,
-        pick_up_date: req.body.pick_up_date
+        exp: req.body.exp
     };
 
     Helper.availToPickUp(waste)
@@ -87,18 +88,15 @@ const moveToPickUp = (req, res) => {
 };
 
 const moveToComplete = (req, res) => {
-    console.log(req.body)
     const { id } = req.body;
     const waste = {
         type: req.body.type,
-        description: req.body.description,
         producer_id: req.body.producer_id,
-        producer_emp: req.body.producer_emp,
-        transformer_id: req.body.transformer_id,
-        transformer_emp: req.body.transformer_emp,
+        address: req.body.address,
+        description: req.body.description,
+        time_available: req.body.time_available,
         date_posted: req.body.date_posted,
-        exp: req.body.exp,
-        pick_up_date: req.body.pick_up_date
+        exp: req.body.exp
     };
 
     Helper.pickUpToComplete(waste)

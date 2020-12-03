@@ -3,7 +3,6 @@ const db = require('../../data/KnexConfig.js');
 
 // SEARCH DATA
 const searchAvailable = filter => {
-    console.log(filter)
     return db('available').where(filter);
 };
 
@@ -15,8 +14,8 @@ const searchCompleted = filter => {
     return db('completed').where(filter);
 };
 
-const searchArchive = filter => {
-    return db('archive').where(filter);
+const searchCancelled = filter => {
+    return db('cancelled').where(filter);
 };
 
 
@@ -49,7 +48,6 @@ const availToPickUp = wasteObj => {
 };  
 
 const pickUpToComplete = (wasteObj) => {
-    console.log(wasteObj)
     return db('completed')
     .insert(wasteObj)
     .then(([id]) => {
@@ -71,7 +69,7 @@ module.exports ={
     
     searchAvailable,
     searchCompleted,
-    searchArchive,
+    searchCancelled,
     searchPickUp,
 
     getAllAvailable,

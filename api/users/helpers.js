@@ -4,45 +4,21 @@ const GetByUserEmail = email=> {
     return db('users').where(email)
 };
 
-const GetByOrgEmail = email=> {
-    return db('orgs').where(email)
-};
 
 const GetAllUsers = () => {
     return db('users')
 }
 
-const GetAllOrgs = () => {
-    return db('orgs')
-}
 
 const searchByName = name => {
     return db('users')
-        .join('orgs')
         .where(name)
 };
 
 const searchByCity = name => {
-    return db('orgs')
+    return db('users')
         .orderBy('id', 'asc')
         .where(city)
-};
-
-const fetchOrg = filter => {
-    return db('orgs')
-        .select(
-            'id',
-            'type',
-            'name',
-            'email',
-            'phone',
-            'address',
-            'city',
-            'zipcode',
-            'about',
-            'url'
-        )
-        .where(filter)
 };
 
 const fetchUser = filter => {
@@ -50,24 +26,18 @@ const fetchUser = filter => {
         .select(
             'id',
             'type',
-            'email',
+            'company_name',
+            'company_size',
+            'website',
+            'company_address',
+            'company_phone',
             'name',
-            'job',
+            'job_title',
             'phone',
-            'company_id'
+            'email',
 
         )
         .where(filter)
-};
-
-const addOrg = orgObj => {
-    return (
-        db('orgs')
-            .insert(orgObj, 'id')
-            .then(([id]) => {
-                return fetchOrg({ id })
-            })
-    )
 };
 
 const addUser = userObj => {
@@ -80,15 +50,19 @@ const addUser = userObj => {
     )
 };
 
+const updateUser = (id, updatedUser) => {
+    return db('users').where({id}).update(updatedUser, 'id')
+}
+
+const deleteUser = filter => {
+    return db('users').where(filter).del()
+}
+
 module.exports = {
-    addOrg,
     addUser,
-    fetchOrg,
     fetchUser,
     searchByCity,
     GetByUserEmail,
-    GetByOrgEmail,
     GetAllUsers,
-    GetAllOrgs,
     searchByName
 }
