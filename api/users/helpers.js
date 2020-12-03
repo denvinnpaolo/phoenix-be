@@ -1,11 +1,11 @@
 const db = require('../../data/KnexConfig.js');
 
-const GetByUserEmail = email=> {
+const getByUserEmail = email=> {
     return db('users').where(email)
 };
 
 
-const GetAllUsers = () => {
+const getAllUsers = () => {
     return db('users')
 }
 
@@ -50,8 +50,8 @@ const addUser = userObj => {
     )
 };
 
-const updateUser = (id, updatedUser) => {
-    return db('users').where({id}).update(updatedUser, 'id')
+const updateUser = (email, updatedUser) => {
+    return db('users').where({email}).update(updatedUser, 'id')
 }
 
 const deleteUser = filter => {
@@ -61,8 +61,10 @@ const deleteUser = filter => {
 module.exports = {
     addUser,
     fetchUser,
+    searchByName,
     searchByCity,
-    GetByUserEmail,
-    GetAllUsers,
-    searchByName
+    getByUserEmail,
+    getAllUsers,
+    updateUser,
+    deleteUser
 }

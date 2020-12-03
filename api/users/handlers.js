@@ -5,7 +5,6 @@ const generateToken = require('../../utils/token.js');
 
 const register = (req, res) => {
     let password = hash(req.body.password)
-    console.log(req.body)
 
     const user = {
         type: req.body.type,
@@ -21,7 +20,6 @@ const register = (req, res) => {
         password: password
     };
 
-    console.log(user)
     Helper.addUser(user)
         .then(([user]) => {
             const token = generateToken(user);
@@ -32,16 +30,14 @@ const register = (req, res) => {
             })
 
         })
-        .catch(err => {
-            res.status(500).json({message: err})
-        })
+        .catch(err => res.status(500).json({message: err}))
 }
 
 
 const login = (req, res) => {
     const { email, password } = req.body;
 
-    Helper.GetByUserEmail({email})
+    Helper.getByUserEmail({email})
     .then(([user]) => {
 
         // check to see if password matches w/ the one in the database
@@ -64,25 +60,48 @@ const login = (req, res) => {
                 })
         }
     })  
-    .catch(err => {
-        res.status(500).json({
-            message: err
-        })
-    })
+    .catch(err => res.status(500).json({ error: err}))
 };
 
+const updateUser = (req, res) => {
+
+    const {email, filter} = req.body;
+
+    Helper.getByUserEmail({email})
+        .then(([user]) => {
+            updatedUser = {
+                ...user,
+                {filter}
+            }
+            Helper.updateUser(email, updatedUser)
+                .then(updated => {
+                    res.status(200).json({
+                        token: generateToken(updated)
+                        data: updatedUser
+                    })
+                })
+                .catch(err => {
+                    res.status(400).json({
+                        message: "Email used not valid",
+                        error: err
+                    })
+                })
+        })
+        .catch(err => res.status(500).json({ error: err }))
+    
+    
+    
+}
+
+
 const allUsers = (req, res) => {
-    Helper.GetAllUsers()
+    Helper.getAllUsers()
         .then((users) => {
             res.status(200).json({
                 users: users
             })
         })
-        .catch(err => {
-            res.status(500).json({
-                err: err
-            })
-        })
+        .catch(err => res.status(500).json({error: err}))
 };
 
 
