@@ -14,8 +14,8 @@ const searchCompleted = filter => {
     return db('completed').where(filter);
 };
 
-const searchCancelled = filter => {
-    return db('cancelled').where(filter);
+const searchCanceled = filter => {
+    return db('canceled').where(filter);
 };
 
 
@@ -28,20 +28,33 @@ const getAllPickUps = () => {
     return db('pick_up')
 };
 
+const getAllPickUpsByCompanyId = filter => {
+    return db('pick_up').where(filter)
+};
+
+const getAllCompletedByCompanyId = filter => {
+    return db('completed').where(filter)
+};
+
+const getAllCanceledByCompanyId = filter => {
+    return db('canceled').where(filter)
+}
+
 
 // ADDING DATA
 const addWaste = wasteObj => {
     return db('available')
         .insert(wasteObj)
-        .then((id) => {
-            return searchWaste({ id })
+        .then(([id]) => {
+            return searchAvailable({ id })
         })
 };
 
 const availToPickUp = wasteObj => {
+    console.log(wasteObj)
     return db('pick_up')
         .insert(wasteObj)
-        .then(([id]) => {
+        .then( ([id]) => {
             return searchPickUp({ id }) 
         })
 
@@ -59,17 +72,17 @@ const pickUpToComplete = (wasteObj) => {
 // DELETION
 const deleteAvail = (id) => {
     return db('available').where(id).del()
-}
+};
 
 const deletePickUp = (id) => {
     return db('pick_up').where(id).del()
-}
+};
 
 module.exports ={
     
     searchAvailable,
     searchCompleted,
-    searchCancelled,
+    searchCanceled,
     searchPickUp,
 
     getAllAvailable,

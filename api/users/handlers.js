@@ -63,39 +63,39 @@ const login = (req, res) => {
     .catch(err => res.status(500).json({ error: err}))
 };
 
-const updateUser = (req, res) => {
+// const updateUser = (req, res) => {
 
-    const {email, filter} = req.body;
+//     const {email, filter} = req.body;
 
-    Helper.getByUserEmail({email})
-        .then(([user]) => {
-            updatedUser = {
-                ...user,
-                {filter}
-            }
-            Helper.updateUser(email, updatedUser)
-                .then(updated => {
-                    res.status(200).json({
-                        token: generateToken(updated)
-                        data: updatedUser
-                    })
-                })
-                .catch(err => {
-                    res.status(400).json({
-                        message: "Email used not valid",
-                        error: err
-                    })
-                })
-        })
-        .catch(err => res.status(500).json({ error: err }))
-}
+//     Helper.getByUserEmail({email})
+//         .then(([user]) => {
+//             updatedUser = {
+//                 ...user,
+//                 filter
+//             }
+//             Helper.updateUser(email, updatedUser)
+//                 .then(updated => {
+//                     res.status(200).json({
+//                         token: generateToken(updated)
+//                         data: updatedUser
+//                     })
+//                 })
+//                 .catch(err => {
+//                     res.status(400).json({
+//                         message: "Email used not valid",
+//                         error: err
+//                     })
+//                 })
+//         })
+//         .catch(err => res.status(500).json({ error: err }))
+// }
 
 const deleteUser = (req, res) => {
     const { email } = req.body;
 
     Helper.deleteUser({ email })
         .then (() => res.status(201).end())
-        .catch(err => res.status(500.json({ error: err})))
+        .catch(err => res.status(500).json({ error: err}));
 }
 
 

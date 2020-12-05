@@ -34,8 +34,7 @@ const fetchUser = filter => {
             'name',
             'job_title',
             'phone',
-            'email',
-
+            'email'
         )
         .where(filter)
 };

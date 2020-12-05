@@ -55,18 +55,21 @@ const addWaste = (req, res) => {
 const moveToPickUp = (req, res) => {
     const { id } = req.body;
     const waste = {
+        date_posted: req.body.date_posted,
+        exp: req.body.exp,
+        pick_up_date: req.body.pick_up_date,
+        time_available: req.body.time_available,
         type: req.body.type,
-        producer_id: req.body.producer_id,
         address: req.body.address,
         description: req.body.description,
-        time_available: req.body.time_available,
-        date_posted: req.body.date_posted,
-        exp: req.body.exp
+        producer_id: req.body.producer_id,
+        transformer_id: req.body.transformer_id
+
+
     };
 
     Helper.availToPickUp(waste)
-        .then(waste => {
-            console.log(waste)
+        .then(([waste])=> {
             Helper.deleteAvail({id})
                 .then(moved => {
                     console.log(moved)
@@ -122,12 +125,28 @@ const moveToComplete = (req, res) => {
         })
 };
 
-const searchBy = (req, res) => {
+const searchByPickUp = (req, res) => {
+    const {id} = req.params
 
-    Helper.searchWaste(req.body)
+    Helper.searchPickUp({id})
         .then(wasteList => {
             res.status(200).json({
                 available: wasteList
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: err
+            })
+        })
+};
+
+const searchByCompleted = (req, res) => {
+
+    Helper.searchByCompleted(req.body)
+        .then(wasteList => {
+            res.status(200).json({
+                completed: wasteList
             })
         })
         .catch(err => {
@@ -171,5 +190,6 @@ module.exports = {
     addWaste,
     moveToPickUp,
     moveToComplete,
-    searchBy
+    searchByPickUp,
+    searchByCompleted
 }
