@@ -6,7 +6,7 @@ const searchAvailable = filter => {
     return db('available').where(filter);
 };
 
-const searchPickUp = filter => {
+const searchPickUp = filter => {   
     return db('pick_up').where(filter)
 }
 

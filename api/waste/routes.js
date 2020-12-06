@@ -20,7 +20,7 @@ router.post('/add-waste', addWaste);
 router.post('/to-pick-up', moveToPickUp);
 router.post('/to-complete', moveToComplete);
 
-router.get('/search-by/pick-up/:id', searchByPickUp);
+router.get('/search-by/pick-up/', searchByPickUp);
 router.get('/search-by/completed', searchByCompleted);
 
 

@@ -126,12 +126,12 @@ const moveToComplete = (req, res) => {
 };
 
 const searchByPickUp = (req, res) => {
-    const {id} = req.params
+    const id = req.body
 
-    Helper.searchPickUp({id})
+    Helper.searchPickUp(id)
         .then(wasteList => {
             res.status(200).json({
-                available: wasteList
+                pick_up: wasteList
             })
         })
         .catch(err => {
