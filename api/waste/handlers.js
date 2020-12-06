@@ -50,7 +50,7 @@ const addWaste = (req, res) => {
                 message: err
             })
         })
-}
+};
 
 const moveToPickUp = (req, res) => {
     const { id } = req.body;
@@ -64,8 +64,6 @@ const moveToPickUp = (req, res) => {
         description: req.body.description,
         producer_id: req.body.producer_id,
         transformer_id: req.body.transformer_id
-
-
     };
 
     Helper.availToPickUp(waste)
@@ -93,13 +91,15 @@ const moveToPickUp = (req, res) => {
 const moveToComplete = (req, res) => {
     const { id } = req.body;
     const waste = {
+        date_posted: req.body.date_posted,
+        exp: req.body.exp,
+        pick_up_date: req.body.pick_up_date,
+        time_available: req.body.time_available,
         type: req.body.type,
-        producer_id: req.body.producer_id,
         address: req.body.address,
         description: req.body.description,
-        time_available: req.body.time_available,
-        date_posted: req.body.date_posted,
-        exp: req.body.exp
+        producer_id: req.body.producer_id,
+        transformer_id: req.body.transformer_id
     };
 
     Helper.pickUpToComplete(waste)
