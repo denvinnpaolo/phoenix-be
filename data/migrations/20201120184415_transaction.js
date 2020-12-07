@@ -31,6 +31,7 @@ exports.up = function(knex) {
         tbl.string('pick_up_date').notNullable();
         tbl.string('time_available')
         tbl.string('type').notNullable();
+        tbl.string('address').notNullable();
         tbl.string('description').notNullable();
         tbl.integer('producer_id').notNullable();
         tbl.integer('transformer_id').notNullable();
@@ -42,6 +43,7 @@ exports.up = function(knex) {
       tbl.string('pick_up_date').notNullable();
       tbl.string('time_available')
       tbl.string('type').notNullable();
+      tbl.string('address').notNullable();
       tbl.string('description').notNullable();
       tbl.integer('producer_id').notNullable();
       tbl.integer('transformer_id').notNullable();

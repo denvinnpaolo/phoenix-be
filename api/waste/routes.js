@@ -8,7 +8,8 @@ const {
     moveToComplete,
     moveToPickUp,
     searchByPickUp,
-    searchByCompleted
+    searchByCompleted,
+    searchByCanceled
 } = require('./handlers.js');
 
 
@@ -22,6 +23,8 @@ router.post('/to-complete', moveToComplete);
 
 router.get('/search-by/pick-up', searchByPickUp);
 router.get('/search-by/completed', searchByCompleted);
+router.get('/search-by/canceled', searchByCanceled);
+
 
 
 module.exports = router;

@@ -89,6 +89,7 @@ const moveToPickUp = (req, res) => {
 };
 
 const moveToComplete = (req, res) => {
+    console.log(req.body)
     const { id } = req.body;
     const waste = {
         date_posted: req.body.date_posted,
@@ -129,9 +130,9 @@ const searchByPickUp = (req, res) => {
     const id = req.body
 
     Helper.searchPickUp(id)
-        .then(wasteList => {
+        .then(data => {
             res.status(200).json({
-                pick_up: wasteList
+                data
             })
         })
         .catch(err => {
@@ -142,11 +143,13 @@ const searchByPickUp = (req, res) => {
 };
 
 const searchByCompleted = (req, res) => {
+    const id = req.body
 
-    Helper.searchByCompleted(req.body)
-        .then(wasteList => {
+
+    Helper.searchCompleted(id)
+        .then(data => {
             res.status(200).json({
-                completed: wasteList
+                data
             })
         })
         .catch(err => {
@@ -156,40 +159,33 @@ const searchByCompleted = (req, res) => {
         })
 };
 
-const getAvailandComp = (req, res) => {
-    const { id } = req.body;
-    let posts = {
-        available: [],
-        complete: []
-    }
-    Helper.searchAvailable({id})
-        .then(avails => {
-            posts.available = avails;
-            Helper.searchCompleted({id})
-                .then(comps => {
-                    posts.complete = comps
-                    
-                    res.status(200).json({
-                        posts: posts
-                    })
-                })
-                .catch(err => {
-                    message: err
-                })
+const searchByCanceled = (req, res) => {
+    const id = req.body
+
+
+    Helper.searchCanceled(id)
+        .then(data => {
+            res.status(200).json({
+                data
+            })
         })
         .catch(err => {
-            message: err
+            res.status(500).json({
+                message: err
+            })
         })
 };
+
+
 
 
 module.exports = {
     getAllAvailable,
     getAllPickUps,
-    getAvailandComp,
     addWaste,
     moveToPickUp,
     moveToComplete,
     searchByPickUp,
-    searchByCompleted
+    searchByCompleted,
+    searchByCanceled
 }
