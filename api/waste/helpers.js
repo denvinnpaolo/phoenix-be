@@ -60,6 +60,14 @@ const availToPickUp = wasteObj => {
 
 };  
 
+const availToPickUpMulti = wasteList => {
+    return(
+        wasteList.map(waste=> {
+            return db('pick_up')
+        })
+    )
+}
+
 const pickUpToComplete = (wasteObj) => {
     return db('completed')
     .insert(wasteObj)
