@@ -7,6 +7,7 @@ const {
     getAllPickUps,
     moveToComplete,
     moveToPickUp,
+    searchByAvailable,
     searchByPickUp,
     searchByCompleted,
     searchByCanceled
@@ -16,11 +17,13 @@ const {
 
 router.get('/', getAllAvailable);
 router.get('/pick-ups', getAllPickUps);
+router.get('/available')
 
 router.post('/add-waste', addWaste);
 router.post('/to-pick-up', moveToPickUp);
 router.post('/to-complete', moveToComplete);
 
+router.get('/search-by/available', searchByAvailable)
 router.get('/search-by/pick-up', searchByPickUp);
 router.get('/search-by/completed', searchByCompleted);
 router.get('/search-by/canceled', searchByCanceled);

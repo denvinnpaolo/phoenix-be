@@ -5,7 +5,7 @@ const getAllAvailable = (req, res) => {
     Helper.getAllAvailable()
         .then((wastes) => {
             res.status(200).json({
-                available: wastes
+                data: wastes
             })
         })
         .catch(err => {
@@ -126,6 +126,23 @@ const moveToComplete = (req, res) => {
         })
 };
 
+const searchByAvailable = (req, res) => {
+    const id = req.body
+
+    console.log(id)
+    Helper.searchAvailable(id)
+        .then(([data])=> {
+            res.status(200).json({
+                data
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: err
+            })
+        })
+};
+
 const searchByPickUp = (req, res) => {
     const id = req.body
 
@@ -186,6 +203,7 @@ module.exports = {
     moveToPickUp,
     moveToComplete,
     searchByPickUp,
+    searchByAvailable,
     searchByCompleted,
     searchByCanceled
 }
