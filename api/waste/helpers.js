@@ -1,9 +1,18 @@
+const { response } = require('express');
 const db = require('../../data/KnexConfig.js');
 
 
 // SEARCH DATA
+const searchMultiAvail = async  list => {
+    const result = await list.map(async (item)=> {
+        const object = await searchAvailable(item)
+        return object
+    })
+    return Promise.all(result)
+}
+
 const searchAvailable = filter => {
-    return db('available').where(filter);
+    return db('available').where(filter).first();
 };
 
 const searchPickUp = filter => {   
@@ -88,6 +97,7 @@ const deletePickUp = (id) => {
 
 module.exports ={
     
+    searchMultiAvail,
     searchAvailable,
     searchCompleted,
     searchCanceled,

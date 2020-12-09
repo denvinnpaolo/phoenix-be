@@ -126,10 +126,28 @@ const moveToComplete = (req, res) => {
         })
 };
 
+const searchMultiAvail = (req, res) => {
+    const list = [
+        {id: 13},
+        {id: 14}
+    ];
+    Helper.searchMultiAvail(list)
+        .then((data)=> {
+            console.log(data)
+            res.status(200).json({
+                data
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: err
+            })
+        })
+}
+
 const searchByAvailable = (req, res) => {
     const id = req.body
 
-    console.log(id)
     Helper.searchAvailable(id)
         .then(([data])=> {
             res.status(200).json({
@@ -205,5 +223,6 @@ module.exports = {
     searchByPickUp,
     searchByAvailable,
     searchByCompleted,
-    searchByCanceled
+    searchByCanceled,
+    searchMultiAvail
 }
