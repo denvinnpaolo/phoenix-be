@@ -7,16 +7,7 @@ const register = (req, res) => {
     let password = hash(req.body.password)
 
     const user = {
-        type: req.body.type,
-        company_name: req.body.company_name,
-        company_size: req.body.company_size,
-        website: req.body.website,
-        company_address: req.body.company_address,
-        company_phone: req.body.phone,
-        name: req.body.name,
-        job_title: req.body.job_title,
-        phone: req.body.phone,
-        email: req.body.email,
+        ...req.body,
         password: password
     };
 

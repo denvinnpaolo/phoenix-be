@@ -7,6 +7,7 @@ exports.up = function(knex) {
             tbl.string('company_name').notNullable();
             tbl.integer('company_size').notNullable();
             tbl.string('website');
+            tbl.string('company_type')
             tbl.string('company_address');
             tbl.string('company_phone');
             tbl.string('name');

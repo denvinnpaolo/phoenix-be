@@ -6,8 +6,9 @@ const {
     getAllAvailable, 
     getAllPickUps,
     moveToComplete,
+    moveToCancel,
     moveToPickUp,
-    searchByAvailable,
+    moveToPickUpMulti,
     searchByPickUp,
     searchByCompleted,
     searchByCanceled,
@@ -16,17 +17,21 @@ const {
 
 
 
+
 router.get('/', getAllAvailable);
 router.get('/pick-ups', getAllPickUps);
 router.get('/available')
-router.get('/available/multi', searchMultiAvail)
+router.post('/available/multi', searchMultiAvail)
 
 router.post('/add-waste', addWaste);
 router.post('/to-pick-up', moveToPickUp);
+router.post('/to-cancel', moveToCancel);
 router.post('/to-complete', moveToComplete);
+router.post('/to-pick-up/multi', moveToPickUpMulti)
 
-router.get('/search-by/available', searchByAvailable)
-router.get('/search-by/pick-up', searchByPickUp);
+
+router.post('/search-by/available', searchMultiAvail)
+router.post('/search-by/pick-up', searchByPickUp);
 router.get('/search-by/completed', searchByCompleted);
 router.get('/search-by/canceled', searchByCanceled);
 

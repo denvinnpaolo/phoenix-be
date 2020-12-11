@@ -5,6 +5,7 @@ exports.up = function(knex) {
         tbl.increments();
         tbl.integer('producer_id').notNullable();
         tbl.string('type').notNullable();
+        tbl.string('items').notNullable();
         tbl.string('address').notNullable();
         tbl.string('description').notNullable();
         tbl.string('time_available').notNullable();
@@ -19,6 +20,7 @@ exports.up = function(knex) {
         tbl.string('time_available').notNullable();
         tbl.string('type').notNullable();
         tbl.string('address').notNullable();
+        tbl.string('items').notNullable();
         tbl.string('description').notNullable();
         tbl.integer('producer_id').notNullable();
         tbl.integer('transformer_id').notNullable();
@@ -32,10 +34,10 @@ exports.up = function(knex) {
         tbl.string('time_available')
         tbl.string('type').notNullable();
         tbl.string('address').notNullable();
+        tbl.string('items').notNullable(); 
         tbl.string('description').notNullable();
         tbl.integer('producer_id').notNullable();
         tbl.integer('transformer_id').notNullable();
-
     })
     .createTable('canceled', tbl => {
       tbl.string('date_posted').notNullable();
@@ -44,6 +46,7 @@ exports.up = function(knex) {
       tbl.string('time_available')
       tbl.string('type').notNullable();
       tbl.string('address').notNullable();
+      tbl.string('items').notNullable();
       tbl.string('description').notNullable();
       tbl.integer('producer_id').notNullable();
       tbl.integer('transformer_id').notNullable();
