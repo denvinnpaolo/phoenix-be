@@ -31,14 +31,7 @@ const getAllPickUps = (req, res) => {
 
 const addWaste = (req, res) => {
     const waste = {
-        type: req.body.type,
-        producer_id: req.body.producer_id,
-        address: req.body.address,
-        items: req.body.items,
-        description: req.body.description,
-        time_available: req.body.time_available,
-        date_posted: req.body.date_posted,
-        exp: req.body.exp
+        ...req.body,
     }
     Helper.addWaste(waste)
         .then(([waste]) => {
@@ -74,7 +67,7 @@ const moveToPickUp = (req, res) => {
     console.log('req',req.body)
     const { id } = req.body;
     const waste = {
-
+        // ...req.body,
         date_posted: req.body.date_posted,
         exp: req.body.exp,
         pick_up_date: req.body.pick_up_date,
@@ -216,8 +209,6 @@ const searchByAvailable = (req, res) => {
 
 const searchByPickUp = (req, res) => {
     const id = req.body
-    console.log("HANDLER:",id)
-
 
     Helper.searchPickUp(id)
         .then(data => {
@@ -233,6 +224,7 @@ const searchByPickUp = (req, res) => {
 };
 
 const searchByCompleted = (req, res) => {
+    console.log(req.body)
     const id = req.body
 
 
@@ -251,7 +243,6 @@ const searchByCompleted = (req, res) => {
 
 const searchByCanceled = (req, res) => {
     const id = req.body
-
 
     Helper.searchCanceled(id)
         .then(data => {

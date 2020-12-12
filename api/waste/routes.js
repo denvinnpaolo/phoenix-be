@@ -32,8 +32,8 @@ router.post('/to-pick-up/multi', moveToPickUpMulti)
 
 router.post('/search-by/available', searchMultiAvail)
 router.post('/search-by/pick-up', searchByPickUp);
-router.get('/search-by/completed', searchByCompleted);
-router.get('/search-by/canceled', searchByCanceled);
+router.post('/search-by/completed', searchByCompleted);
+router.post('/search-by/canceled', searchByCanceled);
 
 
 
