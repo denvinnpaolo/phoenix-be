@@ -26,7 +26,7 @@ Auth Endpoints
 |----------|:---------|:----------|:----------------------|:-------------|
 | users    |  Get     | /users      |                     |Returns ALL the users in users database |
 | users    | Post     | /login    | email, password | Fetches user information if credentials inputted is in the database      |
-| operator or diner    |  Post     | api/register | username, password, type | Creates a new user profile, returns the username , id, type and a jsonwebtoken in the body of the response|
+| users|  Post     | /register | company_name, company_size, type,  | Creates a new user profile, returns the username , id, type and a jsonwebtoken in the body of the response|
 | operator or diner    |  Post     | api/login | username, password, typee |Uses the username and passowrd sent up to verify the user, if they match, returns the username , id, type and a jsonwebtoken in the body of the response|
 
 Status Codes
