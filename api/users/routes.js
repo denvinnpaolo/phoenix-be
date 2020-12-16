@@ -16,8 +16,8 @@ router.post('/register', validateIsEmailTaken,  register);
 
 
 
-router.get('/', (req, res) => {
-    res.status(200).send('Howdy')
+router.get('/greetings', (req, res) => {
+    res.status(200).send('Holla')
 });
 
 module.exports = router;
