@@ -14,7 +14,6 @@ const register = (req, res) => {
     Helper.addUser(user)
         .then(([user]) => {
             const token = generateToken(user);
-            console.log(user)
             
             res.status(201).json({
                 token: token

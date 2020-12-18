@@ -40,9 +40,10 @@ const fetchUser = filter => {
 };
 
 const addUser = userObj => {
+    console.log(userObj)
     return (
         db('users')
-            .insert(userObj, 'id')
+            .insert(userObj)
             .then(( [id] )=> {
                 return fetchUser({ id })
             })

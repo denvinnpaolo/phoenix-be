@@ -12,7 +12,7 @@ const { validateIsEmailTaken } = require('./validators.js')
 
 router.get('/users', allUsers)
 router.post('/login', login);
-router.post('/register', validateIsEmailTaken,  register);
+router.post('/register',  register);
 
 
 
