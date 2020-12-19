@@ -119,7 +119,7 @@ const pickUpToCancel = (wasteObj) => {
 // DELETION
 
 const deleteAvail = (id) => {
-    console.log('database-> deleteAvail-> id: ', id)
+    console.log('database-> deleteAvail-> id ',id)
 
     return db('available').where(id).del()
 };
