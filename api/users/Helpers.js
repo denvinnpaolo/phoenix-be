@@ -44,7 +44,7 @@ const addUser = userObj => {
     console.log('database-> addUser-> object: ', userObj)
     return (
         db('users')
-            .insert(userObj, 'id')
+            .insert(userObj)
             .then(( [id] )=> {
                 return fetchUser({ id })
             })

@@ -30,7 +30,7 @@ module.exports = {
       user: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       port: process.env.DATABASE_PORT,
-      host: "db-postgresql-nyc3-58258-do-user-8447850-0.b.db.ondigitalocean.com",
+      host: process.env.DATABASE_URL,
       ssl:true
     },
     useNullAsDefault: true,
