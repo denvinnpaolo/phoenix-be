@@ -124,8 +124,8 @@ const deleteAvail = (id) => {
     return db('available').where(id).del()
 };
 
-const deletePickUp = id => {
-    return db('pick_up').where({id}).del()
+const deletePickUp = (id) => {
+    return db('pick_up').where(id).del()
 };
 
 module.exports ={
