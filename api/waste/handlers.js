@@ -64,10 +64,8 @@ const moveToPickUpMulti = (req, res) => {
 }
 
 const moveToPickUp = (req, res) => {
-    console.log('req',req.body)
     const { id } = req.body;
     const waste = {
-        // ...req.body,
         date_posted: req.body.date_posted,
         exp: req.body.exp,
         pick_up_date: req.body.pick_up_date,
