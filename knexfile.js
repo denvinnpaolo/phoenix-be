@@ -23,17 +23,6 @@ module.exports = {
     }
   },
 
-  staging: {
-    client: 'pg',
-    connection: "postgresql://doadmin:yhhvgk4p5de1z946@db-postgresql-sfo3-14857-do-user-8447850-0.b.db.ondigitalocean.com:25061/defaultdb?sslmode=require",
-    migrations: {
-      directory: './migrations'
-    },
-    seeds: {
-      directory: './seeds'
-    }
-  },
-  
   production: {
     client: "pg",
     connection: {
@@ -44,9 +33,6 @@ module.exports = {
       host: process.env.DATABASE_URL,
       ssl:true
     },
-    // ssl: true,
-    // connection: process.env.DATABASE_URL2,
-    // connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     pool: {
       min: 0,
@@ -58,5 +44,5 @@ module.exports = {
     seeds: {
       directory: './data/seeds'
     }
-  },
+  }
 };
