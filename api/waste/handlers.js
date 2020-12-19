@@ -84,6 +84,7 @@ const moveToPickUp = (req, res) => {
         .then(waste=> {
             Helper.deleteAvail({id})
                 .then(moved => {
+                    console.log(id, waste)
                     res.status(201).json({
                         pick_up: waste
                     })

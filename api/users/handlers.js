@@ -11,12 +11,15 @@ const register = (req, res) => {
         password: password
     };
 
+    const token = generateToken(user);
+
+
     Helper.addUser(user)
         .then(([user]) => {
-            const token = generateToken(user);
             
             res.status(201).json({
-                token: token
+                token: token,
+                user
             })
 
         })

@@ -44,9 +44,9 @@ module.exports = {
       host: process.env.DATABASE_URL,
       ssl:true
     },
-    ssl: true,
+    // ssl: true,
     // connection: process.env.DATABASE_URL2,
-    connection: process.env.DATABASE_URL,
+    // connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     pool: {
       min: 0,
