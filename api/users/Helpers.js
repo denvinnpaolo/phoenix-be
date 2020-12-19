@@ -22,6 +22,7 @@ const searchByCity = name => {
 };
 
 const fetchUser = filter => {
+    console.log(filter)
     return db('users')
         .select(
             'id',
@@ -43,7 +44,7 @@ const addUser = userObj => {
     console.log('database-> addUser-> object: ', userObj)
     return (
         db('users')
-            .insert(userObj)
+            .insert(userObj, 'id')
             .then(( [id] )=> {
                 return fetchUser({ id })
             })
