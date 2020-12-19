@@ -35,7 +35,7 @@ module.exports = {
   },
   
   production: {
-    client: "postgresql",
+    client: "pg",
     // connection: {
     //   database: process.env.DATABASE_NAME,
     //   user: process.env.DATABASE_USERNAME,
@@ -45,8 +45,8 @@ module.exports = {
     //   ssl:true
     // },
     ssl: true,
-    connection: process.env.DATABASE_URL2,
-    // connection: process.env.DATABASE_URL,
+    // connection: process.env.DATABASE_URL2,
+    connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     pool: {
       min: 0,
