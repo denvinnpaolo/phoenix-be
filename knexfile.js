@@ -1,7 +1,7 @@
 /* // Update with your config settings. */
 
 require('dotenv').config();
-// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 
 module.exports = {
   development: {
@@ -25,7 +25,7 @@ module.exports = {
 
   staging: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: "postgresql://doadmin:yhhvgk4p5de1z946@db-postgresql-sfo3-14857-do-user-8447850-0.b.db.ondigitalocean.com:25061/defaultdb?sslmode=require",
     migrations: {
       directory: './migrations'
     },
@@ -35,17 +35,17 @@ module.exports = {
   },
   
   production: {
-    client: "postgresql",
+    client: "pg",
     // connection: {
-    //   database: process.env.DB_DATABASE,
-    //   user: process.env.DB_USERNAME,
-    //   password: process.env.DB_PASSWORD,
-    //   port: process.env.DB_PORT,
+    //   database: process.env.DATABASE_NAME,
+    //   user: process.env.DATABASE_USERNAME,
+    //   password: process.env.DATABASE_PASSWORD,
+    //   port: process.env.DATABASE_PORT,
     //   host: process.env.DATABASE_URL,
     //   ssl:true
     // },
-    connection: process.env.DATABASE_URL,
-    ssl: true,
+    connection: process.env.DATABASE_URL2,
+    // connection: process.env.DATABASE_URL,
     useNullAsDefault: true,
     pool: {
       min: 0,
