@@ -82,7 +82,7 @@ const moveToPickUp = (req, res) => {
         .then(waste=> {
             Helper.deleteAvail({id})
                 .then(moved => {
-                    console.log(id, waste)
+                    // console.log(id, waste)
                     res.status(201).json({
                         pick_up: waste
                     })
@@ -155,7 +155,6 @@ const moveToCancel = (req, res) => {
         .then(waste => {
             Helper.deletePickUp({id})
                 .then(moved => {
-                    console.log(moved)
                     res.status(201).json({
                         completed: waste
                     })
@@ -174,7 +173,6 @@ const moveToCancel = (req, res) => {
 };
 
 const searchMultiAvail = (req, res) => {
-    console.log(req.body)
     let list = Object.values(req.body)
 
     Helper.searchMultiAvail(list)
@@ -223,7 +221,6 @@ const searchByPickUp = (req, res) => {
 };
 
 const searchByCompleted = (req, res) => {
-    console.log(req.body)
     const id = req.body
 
 

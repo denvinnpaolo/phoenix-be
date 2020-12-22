@@ -20,6 +20,7 @@ const searchAvailable = async filter => {
 };
 
 const searchPickUp = filter => {   
+    console.log('Helpers -> search pick up -. filter: ',filter)
     return db('pick_up as p')
     .join('users as u',"p.producer_id", "=", "u.id")
     .select('p.*', "u.name", "u.phone", "u.company_name")
@@ -61,15 +62,19 @@ const getAllCanceledByCompanyId = filter => {
 const addWaste = wasteObj => {
     return db('available')
         .insert(wasteObj)
+        .returning('id')
         .then(([id]) => {
             return searchAvailable({ id })
         })
 };
 
 const availToPickUp = wasteObj => {
+    console.log('database  -> availtoPickup -> waste obj: ',wasteObj)
     return db('pick_up')
         .insert(wasteObj)
+        .returning('id')
         .then( ([id]) => {
+            console.log('db -> availtoPick -> .then: ',id)
             return searchPickUp({transformer_id :id }) 
         })
 
@@ -102,6 +107,7 @@ const availToPickUpMulti = async (list, TI)=> {
 const pickUpToComplete = (wasteObj) => {
     return db('completed')
     .insert(wasteObj)
+    .returning('id')
     .then(([id]) => {
         return searchCompleted({ id }) 
     })
@@ -110,6 +116,7 @@ const pickUpToComplete = (wasteObj) => {
 const pickUpToCancel = (wasteObj) => {
     return db('canceled')
     .insert(wasteObj)
+    .returning('id')
     .then(([id]) => {
         return searchCompleted({ id }) 
     })
@@ -118,7 +125,7 @@ const pickUpToCancel = (wasteObj) => {
 
 // DELETION
 
-const deleteAvail = (id) => {
+const deleteAvail = id => {
     console.log('database-> deleteAvail-> id ',id)
 
     return db('available').where(id).del()
