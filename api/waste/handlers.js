@@ -137,6 +137,7 @@ const moveToComplete = (req, res) => {
 };
 
 const moveToCancel = (req, res) => {
+    console.log('db  -> moveToCancel -> req: ',req.body)
     const { id } = req.body;
     const waste = {
         date_posted: req.body.date_posted,
@@ -156,7 +157,7 @@ const moveToCancel = (req, res) => {
             Helper.deletePickUp({id})
                 .then(moved => {
                     res.status(201).json({
-                        completed: waste
+                        canceled: waste
                     })
                 })
                 .catch(err => {

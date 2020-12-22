@@ -40,6 +40,7 @@ exports.up = function(knex) {
         tbl.integer('transformer_id').notNullable();
     })
     .createTable('canceled', tbl => {
+      tbl.increments();
       tbl.string('date_posted').notNullable();
       tbl.string('exp').notNullable();
       tbl.string('pick_up_date').notNullable();

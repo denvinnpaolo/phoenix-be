@@ -114,11 +114,12 @@ const pickUpToComplete = (wasteObj) => {
 };
 
 const pickUpToCancel = (wasteObj) => {
+    console.log(wasteObj)
     return db('canceled')
     .insert(wasteObj)
     .returning('id')
     .then(([id]) => {
-        return searchCompleted({ id }) 
+        return searchCanceled({ id }) 
     })
 };
 
