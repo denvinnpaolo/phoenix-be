@@ -11,6 +11,7 @@ const searchMultiAvail = async list => {
 }
 
 const searchAvailable = async filter => {
+    console.log('db -> searchAvail -> filter: ', filter)
     const result = await db('available as a')
         .join('users as u',"a.producer_id", "=", "u.id")
         .select('a.*', "u.name", "u.phone", "u.company_name")
@@ -19,12 +20,31 @@ const searchAvailable = async filter => {
     return Promise.all(result)
 };
 
+const searchAvailById = async filter => {
+    console.log('db -> searchAvailById -> filter: ', filter)
+
+    const result = await db('available as a')
+        .join('users as u',"a.producer_id", "=", "u.id")
+        .select('a.*', "u.name", "u.phone", "u.company_name")
+        .where({'a.producer_id': filter});
+
+    return Promise.all(result)
+}
+
+const viewPickUp = filter => {   
+    console.log('Helpers -> search pick up -. filter: ',filter)
+    return db('pick_up as p')
+        .join('users as u',"p.transformer_id", "=", "u.id")
+        .select('p.*', "u.name", "u.phone", "u.company_name")
+        .where(filter)
+}
+
 const searchPickUp = filter => {   
     console.log('Helpers -> search pick up -. filter: ',filter)
     return db('pick_up as p')
-    .join('users as u',"p.producer_id", "=", "u.id")
-    .select('p.*', "u.name", "u.phone", "u.company_name")
-    .where(filter)
+        .join('users as u',"p.producer_id", "=", "u.id")
+        .select('p.*', "u.name", "u.phone", "u.company_name")
+        .where(filter)
 }
 
 const searchCompleted = filter => {
@@ -35,6 +55,9 @@ const searchCanceled = filter => {
     return db('canceled').where(filter);
 };
 
+const searchById = id => {
+    return db('available')
+}
 
 // FETCHING DATA
 const getAllAvailable = () => {
@@ -137,9 +160,11 @@ const deletePickUp = (id) => {
 };
 
 module.exports ={
+    viewPickUp,
     
     searchMultiAvail,
     searchAvailable,
+    searchAvailById,
     searchCompleted,
     searchCanceled,
     searchPickUp,

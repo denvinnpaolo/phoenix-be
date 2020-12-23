@@ -60,7 +60,7 @@ exports.seed = function(knex) {
           address: "421 ave st, Louieville, KY",
           description: "organic waste",
           time_available: "afternoon",
-          exp: "2020-27-12",
+          exp: "2020-12-27",
           items: "Bag 2 XL, 3 S",
           date_posted: "2020-12-19"
         },        {
@@ -96,5 +96,98 @@ exports.seed = function(knex) {
           date_posted: "2020-12-20"
         },
 
+        {id:10,
+          type: "restaurant",
+          producer_id: 2,
+          address: "123 lane st, Los Angeles, CA",
+          description: "organic waste",
+          time_available: "morning",
+          exp: "2020-12-26",
+          items: "Bag 2 XL, 3 S",
+          date_posted: "2020-12-23"},
+          {
+            id:11,
+            type: "hotel",
+            producer_id: 2,
+            address: "421 ave st, Los Angeles, CA",
+            description: "organic waste",
+            time_available: "afternoon",
+            exp: "2020-12-22",
+            items: "Bag 2 XL, 3 S",
+            date_posted: "2020-12-08"
+          },
+          {
+            id:12,
+            type: "business",
+            producer_id: 2,
+            address: "421 ave st, Los Angeles, CA",
+            description: "organic waste",
+            time_available: "evening",
+            exp: "2020-12-29",
+            items: "Bag 2 XL, 3 S",
+            date_posted: "2020-12-08"
+          },        {
+            id:13,
+            type: "hotel",
+            producer_id: 2,
+            address: "421 ave st, New York, NY",
+            description: "organic waste",
+            time_available: "afternoon",
+            exp: "2020-12-25",
+            items: "Bag 2 XL, 3 S",
+            date_posted: "2020-12-19"
+          },        {
+            id:14,
+            type: "hotel",
+            producer_id: 2,
+            address: "421 ave st, Colorado Springs, CO",
+            description: "organic waste",
+            time_available: "morning",
+            exp: "2020-12-23",
+            items: "Bag 2 XL, 3 S",
+            date_posted: "2020-12-18"
+          },        {
+            id:15,
+            type: "hotel",
+            producer_id: 2,
+            address: "421 ave st, Louieville, KY",
+            description: "organic waste",
+            time_available: "afternoon",
+            exp: "2020-12-27",
+            items: "Bag 2 XL, 3 S",
+            date_posted: "2020-12-19"
+          },        {
+            id:16,
+            type: "hotel",
+            producer_id: 2,
+            address: "421 ave st, Tucson, AZ",
+            description: "organic waste",
+            time_available: "afternoon",
+            exp: "2020-12-24",
+            items: "Bag 2 XL, 3 S",
+            date_posted: "2020-12-18"
+          },        {
+            id:17,
+            type: "hotel",
+            producer_id: 2,
+            address: "421 ave st, Las Vegas, NV",
+            description: "organic waste",
+            time_available: "morning",
+            exp: "2020-12-22",
+            items: "Bag 2 XL, 3 S",
+            date_posted: "2020-12-15"
+          },        
+          {
+            id:18,
+            type: "hotel",
+            producer_id: 2,
+            address: "421 ave st, San Francisco, CA",
+            description: "organic waste",
+            time_available: "evening",
+            exp: "2020-12-31",
+            items: "Bag 2 XL, 3 S",
+            date_posted: "2020-12-20"
+          },
+  
       ]);
 };

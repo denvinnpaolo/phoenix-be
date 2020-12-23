@@ -11,6 +11,7 @@ exports.up = function(knex) {
         tbl.string('time_available').notNullable();
         tbl.string('date_posted').notNullable();
         tbl.string('exp').notNullable();
+        
     })
     .createTable('pick_up', tbl => {
         tbl.increments();

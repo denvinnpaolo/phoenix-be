@@ -1,3 +1,4 @@
+const { pickUpToComplete } = require('./Helpers.js');
 const Helper = require('./Helpers.js');
 
 
@@ -255,6 +256,24 @@ const searchByCanceled = (req, res) => {
 };
 
 
+const searchById = (req, res) => {
+    console.log('handlers -> searchbyid => req.body: ', req.body)
+    const {id} = req.body
+
+    Helper.searchAvailById(id)
+        .then(available => {
+            Helper.viewPickUp({producer_id: id})
+                .then(pick_up => {
+                    res.status(200).json({
+                        avail: available,
+                        pick_up: pick_up
+                    })
+                })
+                .catch(err => res.status(404).json({message: err}))
+        })
+        .catch(err => res.status(500).json({message: err}))
+}
+
 
 
 module.exports = {
@@ -269,5 +288,6 @@ module.exports = {
     searchByAvailable,
     searchByCompleted,
     searchByCanceled,
+    searchById,
     searchMultiAvail
 }

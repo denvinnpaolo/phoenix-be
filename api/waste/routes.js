@@ -12,6 +12,7 @@ const {
     searchByPickUp,
     searchByCompleted,
     searchByCanceled,
+    searchById,
     searchMultiAvail
 } = require('./handlers.js');
 
@@ -24,9 +25,9 @@ router.get('/available')
 router.post('/available/multi', searchMultiAvail)
 
 router.post('/add-waste', addWaste);
-router.post('/to-pick-up', moveToPickUp);
 router.post('/to-cancel', moveToCancel);
 router.post('/to-complete', moveToComplete);
+router.post('/to-pick-up', moveToPickUp);
 router.post('/to-pick-up/multi', moveToPickUpMulti)
 
 
@@ -34,6 +35,7 @@ router.post('/search-by/available', searchMultiAvail)
 router.post('/search-by/pick-up', searchByPickUp);
 router.post('/search-by/completed', searchByCompleted);
 router.post('/search-by/canceled', searchByCanceled);
+router.post('/search-by/id', searchById)
 
 
 
