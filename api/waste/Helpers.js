@@ -48,7 +48,10 @@ const searchPickUp = filter => {
 }
 
 const searchCompleted = filter => {
-    return db('completed').where(filter);
+    return db('completed as c')
+        .join('users as u',"p.producer_id", "=", "u.id")
+        .select('c.*', "u.name", "u.phone", "u.company_name")
+        .where(filter)
 };
 
 const searchCanceled = filter => {
@@ -114,7 +117,7 @@ const availToPickUpMulti = async (list, TI)=> {
             type: item.type,
             items: item.items,
             address: item.address,
-            description: item.description,
+            price: item.price,
             date_posted: item.date_posted,
             pick_up_date: item.exp,
             time_available: item.time_available

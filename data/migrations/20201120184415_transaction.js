@@ -7,7 +7,7 @@ exports.up = function(knex) {
         tbl.string('type').notNullable();
         tbl.string('items').notNullable();
         tbl.string('address').notNullable();
-        tbl.string('description').notNullable();
+        tbl.string('price').notNullable();
         tbl.string('time_available').notNullable();
         tbl.string('date_posted').notNullable();
         tbl.string('exp').notNullable();
@@ -22,7 +22,7 @@ exports.up = function(knex) {
         tbl.string('type').notNullable();
         tbl.string('address').notNullable();
         tbl.string('items').notNullable();
-        tbl.string('description').notNullable();
+        tbl.string('price').notNullable();
         tbl.integer('producer_id').notNullable();
         tbl.integer('transformer_id').notNullable();
 
@@ -36,7 +36,7 @@ exports.up = function(knex) {
         tbl.string('type').notNullable();
         tbl.string('address').notNullable();
         tbl.string('items').notNullable(); 
-        tbl.string('description').notNullable();
+        tbl.string('price').notNullable();
         tbl.integer('producer_id').notNullable();
         tbl.integer('transformer_id').notNullable();
     })
@@ -49,10 +49,24 @@ exports.up = function(knex) {
       tbl.string('type').notNullable();
       tbl.string('address').notNullable();
       tbl.string('items').notNullable();
-      tbl.string('description').notNullable();
+      tbl.string('price').notNullable();
       tbl.integer('producer_id').notNullable();
       tbl.integer('transformer_id').notNullable();
     })
+    .createTable('archive', tbl => {
+      tbl.increments();
+      tbl.string('date_posted').notNullable();
+      tbl.string('exp').notNullable();
+      tbl.string('pick_up_date').notNullable();
+      tbl.string('time_available')
+      tbl.string('type').notNullable();
+      tbl.string('address').notNullable();
+      tbl.string('items').notNullable(); 
+      tbl.string('price').notNullable();
+      tbl.integer('producer_id').notNullable();
+      tbl.integer('transformer_id').notNullable();
+      tbl.string('status').notNullable();
+  })
   )
 };
 
@@ -62,6 +76,7 @@ exports.down = function(knex) {
     .dropTableIfExists('pick_up')
     .dropTableIfExists('completed')
     .dropTableIfExists('canceled')
+    .dropTableIfExists('archive')
 
   )
 };

@@ -1,4 +1,3 @@
-const { pickUpToComplete } = require('./Helpers.js');
 const Helper = require('./Helpers.js');
 
 
@@ -74,7 +73,7 @@ const moveToPickUp = (req, res) => {
         items: req.body.items,
         type: req.body.type,
         address: req.body.address,
-        description: req.body.description,
+        price: req.body.price,
         producer_id: req.body.producer_id,
         transformer_id: req.body.transformer_id
     };
@@ -83,7 +82,6 @@ const moveToPickUp = (req, res) => {
         .then(waste=> {
             Helper.deleteAvail({id})
                 .then(moved => {
-                    // console.log(id, waste)
                     res.status(201).json({
                         pick_up: waste
                     })
@@ -111,7 +109,7 @@ const moveToComplete = (req, res) => {
         items: req.body.items,
         type: req.body.type,
         address: req.body.address,
-        description: req.body.description,
+        price: req.body.price,
         producer_id: req.body.producer_id,
         transformer_id: req.body.transformer_id
     };
@@ -148,7 +146,7 @@ const moveToCancel = (req, res) => {
         items: req.body.items,
         type: req.body.type,
         address: req.body.address,
-        description: req.body.description,
+        price: req.body.price,
         producer_id: req.body.producer_id,
         transformer_id: req.body.transformer_id
     };
