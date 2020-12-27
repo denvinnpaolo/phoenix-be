@@ -220,9 +220,9 @@ const searchByPickUp = (req, res) => {
         })
 };
 
+
 const searchByCompleted = (req, res) => {
     const id = req.body
-
 
     Helper.searchCompleted(id)
         .then(data => {

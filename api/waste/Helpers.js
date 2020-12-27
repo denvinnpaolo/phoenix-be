@@ -32,7 +32,6 @@ const searchAvailById = async filter => {
 }
 
 const viewPickUp = filter => {   
-    console.log('Helpers -> search pick up -. filter: ',filter)
     return db('pick_up as p')
         .join('users as u',"p.transformer_id", "=", "u.id")
         .select('p.*', "u.name", "u.phone", "u.company_name")
@@ -40,27 +39,25 @@ const viewPickUp = filter => {
 }
 
 const searchPickUp = filter => {   
-    console.log('Helpers -> search pick up -. filter: ',filter)
-    return db('pick_up as p')
+     return db('pick_up as p')
         .join('users as u',"p.producer_id", "=", "u.id")
         .select('p.*', "u.name", "u.phone", "u.company_name")
         .where(filter)
 }
 
 const searchCompleted = filter => {
+    console.log('searchCompleted: ',filter)
     return db('completed as c')
-        .join('users as u',"p.producer_id", "=", "u.id")
+        .join('users as u',"c.producer_id", "=", "u.id")
         .select('c.*', "u.name", "u.phone", "u.company_name")
         .where(filter)
 };
+
 
 const searchCanceled = filter => {
     return db('canceled').where(filter);
 };
 
-const searchById = id => {
-    return db('available')
-}
 
 // FETCHING DATA
 const getAllAvailable = () => {
