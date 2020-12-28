@@ -263,8 +263,7 @@ const searchById = (req, res) => {
             Helper.viewPickUp({producer_id: id})
                 .then(pick_up => {
                     res.status(200).json({
-                        avail: available,
-                        pick_up: pick_up
+                        data:[...available,...pick_up]
                     })
                 })
                 .catch(err => res.status(404).json({message: err}))
