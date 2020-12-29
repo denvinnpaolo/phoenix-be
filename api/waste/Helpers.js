@@ -48,9 +48,9 @@ const searchPickUp = filter => {
 const searchCompleted = filter => {
     console.log('searchCompleted: ',filter)
     return db('completed as c')
-        .join('users as u',"c.producer_id", "=", "u.id")
+        .join('users as u',"c.producer_id", "u.id")
         .select('c.*', "u.name", "u.phone", "u.company_name")
-        .where(filter)
+    .where(filter)
 };
 
 

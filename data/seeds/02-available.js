@@ -9,9 +9,9 @@ exports.seed = function(knex) {
       address: "123 lane st, Los Angeles, CA",
       price: "0.00",
       time_available: "morning",
-      exp: "2020-12-26",
+      exp: "2021-01-01",
       items: "Bag 2 XL, 3 S",
-      date_posted: "2020-12-23"
+      date_posted: "2020-12-28"
       },
       {
         id:2,
@@ -20,9 +20,9 @@ exports.seed = function(knex) {
         address: "421 ave st, Los Angeles, CA",
         price: "0.00",
         time_available: "afternoon",
-        exp: "2020-12-22",
+        exp: "2021-01-05",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-08"
+        date_posted: "2020-12-28"
       },
       {
         id:3,
@@ -31,9 +31,9 @@ exports.seed = function(knex) {
         address: "421 ave st, Los Angeles, CA",
         price: "0.00",
         time_available: "evening",
-        exp: "2020-12-29",
+        exp: "2021-01-05",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-08"
+        date_posted: "2020-12-28"
       },        {
         id:4,
         type: "hotel",
@@ -41,9 +41,9 @@ exports.seed = function(knex) {
         address: "421 ave st, New York, NY",
         price: "0.00",
         time_available: "afternoon",
-        exp: "2020-12-25",
+        exp: "2021-01-06",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-19"
+        date_posted: "2020-12-28"
       },        {
         id:5,
         type: "hotel",
@@ -51,9 +51,9 @@ exports.seed = function(knex) {
         address: "421 ave st, Colorado Springs, CO",
         price: "0.00",
         time_available: "morning",
-        exp: "2020-12-23",
+        exp: "2021-01-06",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-18"
+        date_posted: "2020-12-28"
       },        {
         id:6,
         type: "hotel",
@@ -61,9 +61,9 @@ exports.seed = function(knex) {
         address: "421 ave st, Louieville, KY",
         price: "0.00",
         time_available: "afternoon",
-        exp: "2020-12-27",
+        exp: "2021-01-06",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-19"
+        date_posted: "2020-12-28"
       },        {
         id:7,
         type: "hotel",
@@ -71,9 +71,9 @@ exports.seed = function(knex) {
         address: "421 ave st, Tucson, AZ",
         price: "0.00",
         time_available: "afternoon",
-        exp: "2020-12-24",
+        exp: "2020-12-28",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-18"
+        date_posted: "2020-12-27"
       },        {
         id:8,
         type: "hotel",
@@ -81,9 +81,9 @@ exports.seed = function(knex) {
         address: "421 ave st, Las Vegas, NV",
         price: "0.00",
         time_available: "morning",
-        exp: "2020-12-22",
+        exp: "2020-12-30",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-15"
+        date_posted: "2020-12-29"
       },        
       {
         id:9,
@@ -92,9 +92,9 @@ exports.seed = function(knex) {
         address: "421 ave st, San Francisco, CA",
         price: "0.00",
         time_available: "evening",
-        exp: "2020-12-31",
+        exp: "2021-01-02",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-20"
+        date_posted: "2020-12-29"
       },
 
       {id:10,
@@ -103,9 +103,9 @@ exports.seed = function(knex) {
         address: "123 lane st, Los Angeles, CA",
         price: "0.00",
         time_available: "morning",
-        exp: "2020-12-26",
+        exp: "2021-01-10",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-23"},
+        date_posted: "2020-12-29"},
         {
           id:11,
           type: "hotel",
@@ -113,9 +113,9 @@ exports.seed = function(knex) {
           address: "421 ave st, Los Angeles, CA",
           price: "0.00",
           time_available: "afternoon",
-          exp: "2020-12-22",
+          exp: "2021-01-01",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-08"
+          date_posted: "2020-12-29"
         },
         {
           id:12,
@@ -124,9 +124,9 @@ exports.seed = function(knex) {
           address: "421 ave st, Los Angeles, CA",
           price: "0.00",
           time_available: "evening",
-          exp: "2020-12-29",
+          exp: "2021-01-06",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-08"
+          date_posted: "2020-12-29"
         },        {
           id:13,
           type: "hotel",
@@ -134,9 +134,9 @@ exports.seed = function(knex) {
           address: "421 ave st, New York, NY",
           price: "0.00",
           time_available: "afternoon",
-          exp: "2020-12-25",
+          exp: "2021-01-03",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-19"
+          date_posted: "2020-12-29"
         },        {
           id:14,
           type: "hotel",
@@ -144,9 +144,9 @@ exports.seed = function(knex) {
           address: "421 ave st, Colorado Springs, CO",
           price: "0.00",
           time_available: "morning",
-          exp: "2020-12-23",
+          exp: "2021-01-04",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-18"
+          date_posted: "2020-12-29"
         },        {
           id:15,
           type: "hotel",
@@ -154,9 +154,9 @@ exports.seed = function(knex) {
           address: "421 ave st, Louieville, KY",
           price: "0.00",
           time_available: "afternoon",
-          exp: "2020-12-27",
+          exp: "2021-01-10",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-19"
+          date_posted: "2020-12-29"
         },        {
           id:16,
           type: "hotel",
@@ -164,9 +164,9 @@ exports.seed = function(knex) {
           address: "421 ave st, Tucson, AZ",
           price: "0.00",
           time_available: "afternoon",
-          exp: "2020-12-24",
+          exp: "2021-01-06",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-18"
+          date_posted: "2020-12-29"
         },        {
           id:17,
           type: "hotel",
@@ -174,9 +174,9 @@ exports.seed = function(knex) {
           address: "421 ave st, Las Vegas, NV",
           price: "0.00",
           time_available: "morning",
-          exp: "2020-12-22",
+          exp: "2021-01-07",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-15"
+          date_posted: "2020-12-29"
         },        
         {
           id:18,
@@ -185,9 +185,9 @@ exports.seed = function(knex) {
           address: "421 ave st, San Francisco, CA",
           price: "0.00",
           time_available: "evening",
-          exp: "2020-12-31",
+          exp: "2020-12-28",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-20"
+          date_posted: "2020-12-25"
         }
       ]);
 };
