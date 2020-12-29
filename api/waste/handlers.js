@@ -260,7 +260,7 @@ const searchById = (req, res) => {
 
     Helper.searchAvailById(id)
         .then(available => {
-            Helper.viewPickUp({producer_id: id})
+            Helper.viewPickUp({producer_id: 2})
                 .then(pick_up => {
                     res.status(200).json({
                         data:[...available,...pick_up]

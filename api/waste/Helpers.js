@@ -46,11 +46,18 @@ const searchPickUp = filter => {
 }
 
 const searchCompleted = filter => {
-    console.log('searchCompleted: ',filter)
-    return db('completed as c')
-        .join('users as u',"c.producer_id", "u.id")
-        .select('c.*', "u.name", "u.phone", "u.company_name")
-    .where(filter)
+    console.log('searchCompleted: ',Object.keys(filter)[0].charAt(0)==='t')
+    if(Object.keys(filter)[0].charAt(0) === 't'){
+        return db('completed as c')
+            .join('users as u',"c.producer_id", "u.id")
+            .select('c.*', "u.name", "u.phone", "u.company_name")
+            .where(filter)
+    } else if(Object.keys(filter)[0].charAt(0) === 'p'){
+        return db('completed as c')
+            .join('users as u',"c.transformer_id", "u.id")
+            .select('c.*', "u.name", "u.phone", "u.company_name")
+            .where(filter)
+    }
 };
 
 
