@@ -7,12 +7,22 @@ const register = (req, res) => {
     let password = hash(req.body.password)
 
     const user = {
-        ...req.body,
+        type: req.body.type,
+        company_name: req.body.company_name,
+        company_size: req.body.company_size,
+        company_type: req.body.company_type,
+        website: req.body.website,
+        company_address: req.body.company_address,
+        company_phone: req.body.company_phone,
+        name: req.body.name,
+        job_title:req.body.job_title,
+        phone: req.body.phone,
+        email: req.body.email,
         password: password
     };
 
     const token = generateToken(user);
-
+    console.log(user)
 
     Helper.addUser(user)
         .then(([user]) => {
