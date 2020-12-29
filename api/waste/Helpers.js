@@ -11,24 +11,35 @@ const searchMultiAvail = async list => {
 }
 
 const searchAvailable = async filter => {
-    console.log('db -> searchAvail -> filter: ', filter)
-    const result = await db('available as a')
-        .join('users as u',"a.producer_id", "=", "u.id")
+    console.log('db -> searchAvailable -> filter: ', filter)
+
+    if(filter.id){
+        const result = await db('available as a')
+        .join('users as u',"a.producer_id", "u.id")
         .select('a.*', "u.name", "u.phone", "u.company_name")
         .where({"a.id": filter.id});
 
-    return Promise.all(result)
+        return Promise.all(result)
+    } else {
+        const result = await db('available as a')
+            .join('users as u',"a.producer_id", "u.id")
+            .select('a.*', "u.name", "u.phone", "u.company_name")
+            .where({"a.id": filter});
+
+        return Promise.all(result)
+    }
 };
 
-const searchAvailById = async filter => {
+const searchAvailById = async (filter) => {
     console.log('db -> searchAvailById -> filter: ', filter)
 
-    const result = await db('available as a')
-        .join('users as u',"a.producer_id", "=", "u.id")
-        .select('a.*', "u.name", "u.phone", "u.company_name")
-        .where({'a.producer_id': filter});
+        const result = await db('available as a')
+                .join('users as u',"a.producer_id", "=", "u.id")
+                .select('a.*', "u.name", "u.phone", "u.company_name")
+                .where({'a.producer_id': filter});
 
-    return Promise.all(result)
+        return Promise.all(result)
+
 }
 
 const viewPickUp = filter => {   
@@ -39,14 +50,27 @@ const viewPickUp = filter => {
 }
 
 const searchPickUp = filter => {   
-     return db('pick_up as p')
+    console.log('searchPickUp: ', filter)
+    if(Object.keys(filter)[0].charAt(0) === 't'){
+        return db('pick_up as p')
         .join('users as u',"p.producer_id", "=", "u.id")
         .select('p.*', "u.name", "u.phone", "u.company_name")
         .where(filter)
+    } else if(Object.keys(filter)[0].charAt(0) === 'p'){
+        return db('pick_up as p')
+        .join('users as u',"p.transformer_id", "=", "u.id")
+        .select('p.*', "u.name", "u.phone", "u.company_name")
+        .where(filter)
+    } else if(Object.keys(filter)[0].charAt(0) === 'i') {
+        return db('pick_up as p')
+        .join('users as u',"p.transformer_id", "=", "u.id")
+        .select('p.*', "u.name", "u.phone", "u.company_name")
+        .where({'p.id': filter.id})
+    }
+
 }
 
 const searchCompleted = filter => {
-    console.log('searchCompleted: ',Object.keys(filter)[0].charAt(0)==='t')
     if(Object.keys(filter)[0].charAt(0) === 't'){
         return db('completed as c')
             .join('users as u',"c.producer_id", "u.id")
@@ -90,6 +114,7 @@ const getAllCanceledByCompanyId = filter => {
 
 // ADDING DATA
 const addWaste = wasteObj => {
+    console.log('db -> addWaste -> obj: ', wasteObj)
     return db('available')
         .insert(wasteObj)
         .returning('id')

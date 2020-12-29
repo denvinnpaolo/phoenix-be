@@ -30,6 +30,7 @@ const getAllPickUps = (req, res) => {
 }
 
 const addWaste = (req, res) => {
+    console.log(req.body)
     const waste = {
         ...req.body,
     }
@@ -173,8 +174,8 @@ const moveToCancel = (req, res) => {
 };
 
 const searchMultiAvail = (req, res) => {
-    let list = Object.values(req.body)
-
+    console.log('handlers -> searchMultiAvail -> req.body: ',req.body)
+    let list = Object.values(req.body);
     Helper.searchMultiAvail(list)
         .then((data)=> {
             res.status(200).json({
@@ -189,6 +190,7 @@ const searchMultiAvail = (req, res) => {
 }
 
 const searchByAvailable = (req, res) => {
+    console.log('searchByavail -> searchAvailable -> req.body: ',req.body)
     const id = req.body
 
     Helper.searchAvailable(id)

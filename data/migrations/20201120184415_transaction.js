@@ -11,7 +11,7 @@ exports.up = function(knex) {
         tbl.string('time_available').notNullable();
         tbl.string('date_posted').notNullable();
         tbl.string('exp').notNullable();
-        
+        tbl.string('img');
     })
     .createTable('pick_up', tbl => {
         tbl.increments();
@@ -25,7 +25,7 @@ exports.up = function(knex) {
         tbl.string('price').notNullable();
         tbl.integer('producer_id').notNullable();
         tbl.integer('transformer_id').notNullable();
-
+        tbl.string('img');
     })
     .createTable('completed', tbl => {
       tbl.increments();
@@ -39,6 +39,7 @@ exports.up = function(knex) {
       tbl.string('price').notNullable();
       tbl.integer('producer_id').notNullable();
       tbl.integer('transformer_id').notNullable();
+      tbl.string('img');
     })
     .createTable('canceled', tbl => {
       tbl.increments();
@@ -52,15 +53,13 @@ exports.up = function(knex) {
       tbl.string('price').notNullable();
       tbl.integer('producer_id').notNullable();
       tbl.integer('transformer_id').notNullable();
+      tbl.string('img');
     })
     .createTable('archive', tbl => {
       tbl.increments();
       tbl.string('date_posted').notNullable();
-      tbl.string('exp').notNullable();
       tbl.string('pick_up_date').notNullable();
-      tbl.string('time_available')
       tbl.string('type').notNullable();
-      tbl.string('address').notNullable();
       tbl.string('items').notNullable(); 
       tbl.string('price').notNullable();
       tbl.integer('producer_id').notNullable();
