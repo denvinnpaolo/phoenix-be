@@ -9,6 +9,7 @@ const {
     moveToCancel,
     moveToPickUp,
     moveToPickUpMulti,
+    updatePost,
     searchByPickUp,
     searchByCompleted,
     searchByCanceled,
@@ -36,6 +37,7 @@ router.post('/search-by/pick-up', searchByPickUp);
 router.post('/search-by/completed', searchByCompleted);
 router.post('/search-by/canceled', searchByCanceled);
 router.post('/search-by/id', searchById)
+router.put('/post/edit', updatePost)
 
 
 

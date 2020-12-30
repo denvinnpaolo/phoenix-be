@@ -271,6 +271,17 @@ const searchById = (req, res) => {
                 .catch(err => res.status(404).json({message: err}))
         })
         .catch(err => res.status(500).json({message: err}))
+};
+
+const updatePost = (req, res) => {
+    console.log("handlers -> updatePost -> req.body: ",req.body)
+    Helper.updatePost(req.body)
+        .then(update => {
+            res.status(200).json({
+                data: update
+            })
+        })
+        .catch(err => res.status(400).json({message: err}))
 }
 
 
@@ -283,6 +294,7 @@ module.exports = {
     moveToPickUp,
     moveToCancel,
     moveToComplete,
+    updatePost,
     searchByPickUp,
     searchByAvailable,
     searchByCompleted,

@@ -179,6 +179,28 @@ const pickUpToCancel = (wasteObj) => {
     })
 };
 
+// EDIT
+
+const updatePost = item => {
+    // console.log('db -> updatePost -> id: ', item.id)
+    if(item.type === 'pick_up'){
+        return db('pick_up')
+            .where({"id":item.id})
+            .update(item.editPickUp, '*')
+            .then(updated =>{
+                return searchPickUp({"id":item.id})
+            })
+            
+    } else if(item.type === 'available'){
+        return db('available')
+            .where(item.id)
+            .update(item.changes, '*')
+            .then(updated =>{
+                return searchPickUp({"id":item.id})
+            })
+    }
+}
+
 
 // DELETION
 
@@ -211,6 +233,8 @@ module.exports ={
     pickUpToComplete,
     deleteAvail,
     addWaste,
+
+    updatePost,
 
     deleteAvail,
     deletePickUp
