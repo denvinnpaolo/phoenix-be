@@ -11,7 +11,7 @@ const searchMultiAvail = async list => {
 }
 
 const searchAvailable = async filter => {
-    console.log('db -> searchAvailable -> filter: ', filter)
+    // console.log('db -> searchAvailable -> filter: ', filter)
 
     if(filter.id){
         const result = await db('available as a')
@@ -31,7 +31,7 @@ const searchAvailable = async filter => {
 };
 
 const searchAvailById = async (filter) => {
-    console.log('db -> searchAvailById -> filter: ', filter)
+    // console.log('db -> searchAvailById -> filter: ', filter)
 
         const result = await db('available as a')
                 .join('users as u',"a.producer_id", "=", "u.id")
@@ -43,7 +43,7 @@ const searchAvailById = async (filter) => {
 }
 
 const viewPickUp = filter => {   
-    console.log('db -> viewPickUp -> filter: ', filter)
+    // console.log('db -> viewPickUp -> filter: ', filter)
     return db('pick_up as p')
         .join('users as u',"p.transformer_id", "=", "u.id")
         .select('p.*', "u.name", "u.phone", "u.company_name")
@@ -87,7 +87,18 @@ const searchCompleted = filter => {
 
 
 const searchCanceled = filter => {
-    return db('canceled').where(filter);
+    console.log(filter)
+    if(Object.keys(filter)[0].charAt(0) === 't'){
+        return db('canceled as c')
+            .join('users as u',"c.producer_id", "u.id")
+            .select('c.*', "u.name", "u.phone", "u.company_name")
+            .where(filter)
+    } else if(Object.keys(filter)[0].charAt(0) === 'p'){
+        return db('canceled as c')
+            .join('users as u',"c.transformer_id", "u.id")
+            .select('c.*', "u.name", "u.phone", "u.company_name")
+            .where(filter)
+    }
 };
 
 
@@ -115,7 +126,7 @@ const getAllCanceledByCompanyId = filter => {
 
 // ADDING DATA
 const addWaste = wasteObj => {
-    console.log('db -> addWaste -> obj: ', wasteObj)
+    // console.log('db -> addWaste -> obj: ', wasteObj)
     return db('available')
         .insert(wasteObj)
         .returning('id')
@@ -125,7 +136,7 @@ const addWaste = wasteObj => {
 };
 
 const availToPickUp = wasteObj => {
-    console.log('database  -> availtoPickup -> waste obj: ',wasteObj)
+    // console.log('database  -> availtoPickup -> waste obj: ',wasteObj)
     return db('pick_up')
         .insert(wasteObj)
         .returning('id')
@@ -170,7 +181,7 @@ const pickUpToComplete = (wasteObj) => {
 };
 
 const pickUpToCancel = (wasteObj) => {
-    console.log(wasteObj)
+    // console.log('db -> pickUpToCancel -> wasteObj: ', wasteObj)
     return db('canceled')
     .insert(wasteObj)
     .returning('id')
@@ -182,7 +193,7 @@ const pickUpToCancel = (wasteObj) => {
 // EDIT
 
 const updatePost = item => {
-    console.log('db -> updatePost -> id: ', item.id)
+    // console.log('db -> updatePost -> id: ', item.id)
     if(item.type === 'pick_up'){
         return db('pick_up')
             .where({"id":item.id})
@@ -205,7 +216,7 @@ const updatePost = item => {
 // DELETION
 
 const deleteAvail = id => {
-    console.log('database-> deleteAvail-> id ',id)
+    // console.log('database-> deleteAvail-> id ',id)
 
     return db('available').where(id).del()
 };
