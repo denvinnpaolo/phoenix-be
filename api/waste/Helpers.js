@@ -43,10 +43,11 @@ const searchAvailById = async (filter) => {
 }
 
 const viewPickUp = filter => {   
+    console.log('db -> viewPickUp -> filter: ', filter)
     return db('pick_up as p')
         .join('users as u',"p.transformer_id", "=", "u.id")
         .select('p.*', "u.name", "u.phone", "u.company_name")
-        .where(filter)
+        .where({'p.producer_id': filter})
 }
 
 const searchPickUp = filter => {   
