@@ -182,7 +182,7 @@ const pickUpToCancel = (wasteObj) => {
 // EDIT
 
 const updatePost = item => {
-    // console.log('db -> updatePost -> id: ', item.id)
+    console.log('db -> updatePost -> id: ', item.id)
     if(item.type === 'pick_up'){
         return db('pick_up')
             .where({"id":item.id})
@@ -193,8 +193,8 @@ const updatePost = item => {
             
     } else if(item.type === 'available'){
         return db('available')
-            .where(item.id)
-            .update(item.changes, '*')
+            .where({"id":item.id})
+            .update(item.editAvail, '*')
             .then(updated =>{
                 return searchPickUp({"id":item.id})
             })
