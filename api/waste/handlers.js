@@ -257,7 +257,7 @@ const searchByCanceled = (req, res) => {
 
 
 const searchById = (req, res) => {
-    console.log('handlers -> searchbyid => req.body: ', req.body)
+    // console.log('handlers -> searchbyid => req.body: ', req.body)'
     const {id} = req.body
 
     Helper.searchAvailById(id)
