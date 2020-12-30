@@ -88,7 +88,7 @@ const moveToPickUp = (req, res) => {
                     })
                 })
                 .catch(err => {
-                    res.status(500).json({
+                    res.status(404).json({
                         message: err
                     })
                 })
@@ -124,7 +124,7 @@ const moveToComplete = (req, res) => {
                     })
                 })
                 .catch(err => {
-                    res.status(500).json({
+                    res.status(400).json({
                         message: err
                     })
                 })
@@ -161,7 +161,7 @@ const moveToCancel = (req, res) => {
                     })
                 })
                 .catch(err => {
-                    res.status(500).json({
+                    res.status(404).json({
                         message: err
                     })
                 })

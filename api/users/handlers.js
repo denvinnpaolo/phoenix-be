@@ -6,7 +6,7 @@ const generateToken = require('../../utils/token.js');
 const register = (req, res) => {
     let password = hash(req.body.password)
 
-    const user = {
+    let user = {
         type: req.body.type,
         company_name: req.body.company_name,
         company_size: req.body.company_size,
@@ -18,18 +18,22 @@ const register = (req, res) => {
         job_title:req.body.job_title,
         phone: req.body.phone,
         email: req.body.email,
-        password: password
     };
 
-    const token = generateToken(user);
+
+    user = {
+        ...user,
+        password: password
+
+    }
     console.log(user)
 
     Helper.addUser(user)
-        .then(([user]) => {
-            
+        .then(([newUser]) => {
+            const token = generateToken(newUser)            
             res.status(201).json({
                 token: token,
-                user
+                newUser
             })
 
         })
