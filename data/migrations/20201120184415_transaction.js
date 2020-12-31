@@ -59,13 +59,13 @@ exports.up = function(knex) {
     .createTable('archive', tbl => {
       tbl.increments();
       tbl.string('date_posted').notNullable();
-      tbl.string('pick_up_date').notNullable();
-      tbl.string('type').notNullable();
       tbl.string('items').notNullable(); 
+      tbl.string('pick_up_date').notNullable();
       tbl.string('price').notNullable();
       tbl.integer('producer_id').notNullable();
-      tbl.integer('transformer_id').notNullable();
       tbl.string('status').notNullable();
+      tbl.integer('transformer_id').notNullable();
+      tbl.string('type').notNullable();
   })
   )
 };

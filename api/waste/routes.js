@@ -3,6 +3,7 @@ const router = express.Router();
 
 const {
     addWaste,
+    archived,
     getAllAvailable, 
     getAllPickUps,
     moveToComplete,

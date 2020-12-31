@@ -42,14 +42,6 @@ const searchAvailById = async (filter) => {
 
 }
 
-const viewPickUp = filter => {   
-    // console.log('db -> viewPickUp -> filter: ', filter)
-    return db('pick_up as p')
-        .join('users as u',"p.transformer_id", "=", "u.id")
-        .select('p.*', "u.name", "u.phone", "u.company_name")
-        .where({'p.producer_id': filter})
-}
-
 const searchPickUp = filter => {   
     console.log('searchPickUp: ', filter)
     if(Object.keys(filter)[0].charAt(0) === 't'){
@@ -87,7 +79,7 @@ const searchCompleted = filter => {
 
 
 const searchCanceled = filter => {
-    console.log(filter)
+    // console.log(filter)
     if(Object.keys(filter)[0].charAt(0) === 't'){
         return db('canceled as c')
             .join('users as u',"c.producer_id", "u.id")
@@ -100,6 +92,28 @@ const searchCanceled = filter => {
             .where(filter)
     }
 };
+
+const searchArcived = filter => {
+    if(Object.keys(filter)[0].charAt(0) === 't'){
+        return db('archive as a')
+            .join('users as u',"a.producer_id", "u.id")
+            .select('a.*', "u.name", "u.phone", "u.company_name")
+            .where(filter)
+    } else if(Object.keys(filter)[0].charAt(0) === 'p'){
+        return db('archive as a')
+            .join('users as u',"a.transformer_id", "u.id")
+            .select('a.*', "u.name", "u.phone", "u.company_name")
+            .where(filter)
+    }
+}
+
+const viewPickUp = filter => {   
+    // console.log('db -> viewPickUp -> filter: ', filter)
+    return db('pick_up as p')
+        .join('users as u',"p.transformer_id", "=", "u.id")
+        .select('p.*', "u.name", "u.phone", "u.company_name")
+        .where({'p.producer_id': filter})
+}
 
 
 // FETCHING DATA
@@ -190,6 +204,16 @@ const pickUpToCancel = (wasteObj) => {
     })
 };
 
+
+const archived = (wasteObj, userType) => {
+    console.log('db -> archived -> userType: ', userType)
+    return db('archive')
+    .insert(wasteObj)
+    .returning('id')
+    .then(([id]) => {
+        return searchArcived({[userType]: id})
+    })
+}
 // EDIT
 
 const updatePost = item => {
@@ -244,6 +268,7 @@ module.exports ={
     pickUpToComplete,
     deleteAvail,
     addWaste,
+    archived,
 
     updatePost,
 
