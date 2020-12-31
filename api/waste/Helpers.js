@@ -94,16 +94,31 @@ const searchCanceled = filter => {
 };
 
 const searchArcived = filter => {
+    // console.log('db -> searchArchived -> filter: ',filter.producer_id)
     if(Object.keys(filter)[0].charAt(0) === 't'){
         return db('archive as a')
             .join('users as u',"a.producer_id", "u.id")
             .select('a.*', "u.name", "u.phone", "u.company_name")
-            .where(filter)
+            .where({"a.id": filter.transformer_id})
     } else if(Object.keys(filter)[0].charAt(0) === 'p'){
         return db('archive as a')
             .join('users as u',"a.transformer_id", "u.id")
             .select('a.*', "u.name", "u.phone", "u.company_name")
-            .where(filter)
+            .where({"a.id": filter.producer_id})
+    }
+}
+
+const searchArchivedById = filter => {
+    if(Object.keys(filter)[0].charAt(0) === 't'){
+        return db('archive as a')
+            .join('users as u',"a.producer_id", "u.id")
+            .select('a.*', "u.name", "u.phone", "u.company_name")
+            .where({"a.transformer_id": filter.transformer_id})
+    } else if(Object.keys(filter)[0].charAt(0) === 'p'){
+        return db('archive as a')
+            .join('users as u',"a.transformer_id", "u.id")
+            .select('a.*', "u.name", "u.phone", "u.company_name")
+            .where({"a.producer_id": filter.producer_id})
     }
 }
 
@@ -117,8 +132,12 @@ const viewPickUp = filter => {
 
 
 // FETCHING DATA
+
+const getAllArchived = () => {
+    return db('archive')
+}
 const getAllAvailable = () => {
-    return db('available as a')
+    return db('available')
 };
 
 const getAllPickUps = () => {
@@ -205,14 +224,17 @@ const pickUpToCancel = (wasteObj) => {
 };
 
 
-const archived = (wasteObj, userType) => {
+const archived = (wasteData, userType) => {
     console.log('db -> archived -> userType: ', userType)
+    console.log('db -> archived -> wasteData: ', wasteData)
+
     return db('archive')
-    .insert(wasteObj)
-    .returning('id')
-    .then(([id]) => {
-        return searchArcived({[userType]: id})
-    })
+        .insert(wasteData)
+        .returning('id')
+        .then(([id]) => {
+            console.log(id)
+            return searchArcived({[userType]: id})
+        })
 }
 // EDIT
 
@@ -249,29 +271,39 @@ const deletePickUp = (id) => {
     return db('pick_up').where(id).del()
 };
 
+const deleteCompleted = (id) => {
+    return db('completed').where({id}).del()
+};
+
+const deleteCanceled = (id) => {
+    return db('canceled').where({id}).del()
+};
 module.exports ={
     viewPickUp,
     
     searchMultiAvail,
     searchAvailable,
     searchAvailById,
+    searchArchivedById,
     searchCompleted,
     searchCanceled,
     searchPickUp,
 
     getAllAvailable,
     getAllPickUps,
+    getAllArchived,
 
     availToPickUp,
     availToPickUpMulti,
     pickUpToCancel,
     pickUpToComplete,
-    deleteAvail,
     addWaste,
     archived,
 
     updatePost,
 
     deleteAvail,
-    deletePickUp
+    deleteCompleted,
+    deletePickUp,
+    deleteCanceled
 }

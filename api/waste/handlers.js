@@ -13,6 +13,12 @@ const getAllPickUps = (req, res) => {
         .catch(err => {res.status(500).json({message: err})})
 }
 
+const getAllArchived = (req, res) => {
+    Helper.getAllArchived()
+        .then(archived => {res.status(200).json({archived: archived})})
+        .catch(err => {res.status(500).json({message: err})})
+}
+
 const addWaste = (req, res) => {
     const waste = {...req.body,}
 
@@ -103,6 +109,7 @@ const moveToCancel = (req, res) => {
 };
 
 const archived = (req, res) => {
+    console.log(req.body)
     const {id, userType} = req.body
 
     const wasteData = {
@@ -150,6 +157,12 @@ const searchByAvailable = (req, res) => {
         .then(([data])=> {res.status(200).json({data})})
         .catch(err => {res.status(500).json({message: err})})
 };
+
+const searchArchivedById = (req, res) => {
+    Helper.searchArchivedById(req.body)
+        .then(data => {res.status(200).json({data})})
+        .catch(err => {res.status(500).json({message:err})})
+}
 
 const searchByPickUp = (req, res) => {
     const id = req.body
@@ -206,17 +219,22 @@ const updatePost = (req, res) => {
 module.exports = {
     getAllAvailable,
     getAllPickUps,
+    getAllArchived,
+
     addWaste,
     archived,
     moveToPickUpMulti,
     moveToPickUp,
     moveToCancel,
     moveToComplete,
+
     updatePost,
+
     searchByPickUp,
     searchByAvailable,
     searchByCompleted,
     searchByCanceled,
     searchById,
-    searchMultiAvail
+    searchMultiAvail,
+    searchArchivedById
 }
