@@ -1,4 +1,4 @@
-const Helper = require('./helpers.js');
+const Helper = require('./Helpers.js');
 
 
 const getAllAvailable = (req, res) => {
