@@ -11,7 +11,7 @@ const register = (req, res) => {
         company_name: req.body.company_name,
         company_size: req.body.company_size,
         website: req.body.website,
-        address: req.body.company_address,
+        address: req.body.address,
         city: req.body.city,
         state: req.body.state,
         country: req.body.country,
@@ -22,7 +22,7 @@ const register = (req, res) => {
         password: password
     };
 
-
+    console.log('handlers -> register -> req.body: ',user)
    
 
     Helper.addUser(user)
