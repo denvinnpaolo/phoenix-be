@@ -15,7 +15,7 @@ const searchByName = name => {
         .where(name)
 };
 
-const searchByCity = name => {
+const searchByCity = city => {
     return db('users')
         .orderBy('id', 'asc')
         .where(city)
@@ -30,10 +30,11 @@ const fetchUser = filter => {
             'company_name',
             'company_size',
             'website',
-            'company_address',
-            'company_phone',
+            'address',
+            'city',
+            'state',
+            'country',
             'name',
-            'job_title',
             'phone',
             'email'
         )

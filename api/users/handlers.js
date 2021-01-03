@@ -10,23 +10,20 @@ const register = (req, res) => {
         type: req.body.type,
         company_name: req.body.company_name,
         company_size: req.body.company_size,
-        company_type: req.body.company_type,
         website: req.body.website,
-        company_address: req.body.company_address,
-        company_phone: req.body.company_phone,
+        address: req.body.company_address,
+        city: req.body.city,
+        state: req.body.state,
+        country: req.body.country,
         name: req.body.name,
-        job_title:req.body.job_title,
+        job_title: req.body.job_title,
         phone: req.body.phone,
         email: req.body.email,
+        password: password
     };
 
 
-    user = {
-        ...user,
-        password: password
-
-    }
-    console.log(user)
+   
 
     Helper.addUser(user)
         .then(([newUser]) => {

@@ -225,8 +225,8 @@ const pickUpToCancel = (wasteObj) => {
 
 
 const archived = (wasteData, userType) => {
-    console.log('db -> archived -> userType: ', userType)
-    console.log('db -> archived -> wasteData: ', wasteData)
+    // console.log('db -> archived -> userType: ', userType)
+    // console.log('db -> archived -> wasteData: ', wasteData)
 
     return db('archive')
         .insert(wasteData)
