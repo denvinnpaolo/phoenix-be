@@ -31,7 +31,7 @@ const searchAvailable = async filter => {
 };
 
 const searchAvailById = async (filter) => {
-    // console.log('db -> searchAvailById -> filter: ', filter)
+    console.log('db -> searchAvailById -> filter: ', filter)
 
         const result = await db('available as a')
                 .join('users as u',"a.producer_id", "=", "u.id")

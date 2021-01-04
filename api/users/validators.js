@@ -14,6 +14,32 @@ const validateIsEmailTaken = (req, res, next) => {
   
 }
 
+const validateID = (req, res, next) => {
+  const { id } = req.params;
+  helper.getUserByfilter({ id }).then(([user]) => {
+    if (!user) {
+      res.status(400).json({ message: "user with this ID does not exist" });
+    } else next();
+  });
+};
+
+const validateLogin = (req, res, next) => {
+  const { password, email} = req.body;
+  if (!password) {
+    res.status(400).json({
+      message: "most include Password"
+    });
+  } else if (!email) {
+    res.status(400).json({
+      message: "most include Email"
+    });
+  } else {
+    next();
+  }
+};
+
 module.exports = {
-    validateIsEmailTaken
+  validateIsEmailTaken,
+  validateID,
+  validateLogin
 };

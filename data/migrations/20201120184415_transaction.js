@@ -2,7 +2,7 @@
 exports.up = function(knex) {
   return (knex.schema
     .createTable('available', tbl => {
-        tbl.increments('id').primary();
+        tbl.increments().primary();
         tbl.string('address').notNullable();
         tbl.string('date_posted').notNullable();
         tbl.string('exp').notNullable();

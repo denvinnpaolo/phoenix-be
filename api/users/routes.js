@@ -7,12 +7,16 @@ const {
     allUsers, 
 } = require('./handlers.js');
 
-const { validateIsEmailTaken } = require('./validators.js')
+const { 
+    validateIsEmailTaken,
+    validateLogin,
+    validateID 
+} = require('./validators.js')
 
 
 router.get('/users', allUsers)
-router.post('/login', login);
-router.post('/register',  register);
+router.post('/login', validateLogin, login);
+router.post('/register',validateIsEmailTaken,  register);
 
 
 

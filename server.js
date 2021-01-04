@@ -5,6 +5,7 @@ const express = require('express');
 
 // middleware
 const serverConfig = require('./middleware/ConfigAPI.js');
+const restrict = require('./middleware/Restrict.js')
 
 // routes
 const userRoutes = require('./api/users/routes.js');
@@ -15,8 +16,8 @@ const server = express();
 serverConfig(server);
 
 
-server.use('/', userRoutes);
-server.use('/organic-waste', wasteRoutes); 
+server.use('/' ,userRoutes);
+server.use('/organic-waste',restrict, wasteRoutes); 
 
 server.get('/', (req, res) => {res.status(200).json({api: 'Server is up and running :)'})});
 
