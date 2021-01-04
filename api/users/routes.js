@@ -14,7 +14,9 @@ const {
 } = require('./validators.js')
 
 
-router.get('/users', allUsers)
+// router to get all users + user info
+// router.get('/users', allUsers)
+
 router.post('/login', validateLogin, login);
 router.post('/register',validateIsEmailTaken,  register);
 
