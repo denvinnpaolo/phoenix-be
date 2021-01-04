@@ -2,7 +2,7 @@
 exports.up = function(knex) {
     return (knex.schema
         .createTable('users', tbl => {
-            tbl.increments();
+            tbl.increments('id').primary();
             tbl.string('type').notNullable();
             tbl.string('company_name').notNullable();
             tbl.integer('company_size').notNullable();

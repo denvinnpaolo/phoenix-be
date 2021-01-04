@@ -2,7 +2,7 @@
 exports.up = function(knex) {
   return (knex.schema
     .createTable('available', tbl => {
-        tbl.increments();
+        tbl.increments('id').primary();
         tbl.string('address').notNullable();
         tbl.string('date_posted').notNullable();
         tbl.string('exp').notNullable();
@@ -15,7 +15,7 @@ exports.up = function(knex) {
 
     })
     .createTable('pick_up', tbl => {
-      tbl.increments();
+      tbl.increments().primary();
       tbl.string('address').notNullable();
       tbl.string('date_posted').notNullable();
       tbl.string('exp').notNullable();
@@ -29,7 +29,7 @@ exports.up = function(knex) {
       tbl.string('type').notNullable();
     })
     .createTable('completed', tbl => {
-      tbl.increments();
+      tbl.increments().primary();
       tbl.string('address').notNullable();
       tbl.string('date_posted').notNullable();
       tbl.string('exp').notNullable();
@@ -43,7 +43,7 @@ exports.up = function(knex) {
       tbl.string('type').notNullable();
     })
     .createTable('canceled', tbl => {
-      tbl.increments();
+      tbl.increments().primary();
       tbl.string('address').notNullable();
       tbl.string('date_posted').notNullable();
       tbl.string('exp').notNullable();
@@ -57,7 +57,7 @@ exports.up = function(knex) {
       tbl.string('type').notNullable();
     })
     .createTable('archive', tbl => {
-      tbl.increments();
+      tbl.increments().primary();
       tbl.string('date_posted').notNullable();
       tbl.string('items').notNullable(); 
       tbl.string('pick_up_date').notNullable();
