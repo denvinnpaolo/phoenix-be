@@ -30,7 +30,7 @@ const register = (req, res) => {
             const token = generateToken(newUser)            
             res.status(201).json({
                 token: token,
-                newUser
+                userdata: newUser
             })
 
         })
@@ -64,35 +64,31 @@ const login = (req, res) => {
                 })
         }
     })  
-    .catch(err => res.status(500).json({ error: err}))
+    .catch(err => res.status(500).json({ message: err}))
 };
 
-// const updateUser = (req, res) => {
+const updateUser = (req, res) => {
+    // console.log('handlers -> updateUser -> req.body: ',req.body)
 
-//     const {email, filter} = req.body;
 
-//     Helper.getByUserEmail({email})
-//         .then(([user]) => {
-//             updatedUser = {
-//                 ...user,
-//                 filter
-//             }
-//             Helper.updateUser(email, updatedUser)
-//                 .then(updated => {
-//                     res.status(200).json({
-//                         token: generateToken(updated)
-//                         data: updatedUser
-//                     })
-//                 })
-//                 .catch(err => {
-//                     res.status(400).json({
-//                         message: "Email used not valid",
-//                         error: err
-//                     })
-//                 })
-//         })
-//         .catch(err => res.status(500).json({ error: err }))
-// }
+    const {id} = req.body 
+
+    Helper.updateUser(id, req.body)
+        .then(([email]) => {
+            Helper.fetchUser({email})
+            .then(([userdata]) => {
+                const token = generateToken(userdata)
+                res.status(200).json({
+                    token: token,
+                    userdata
+                })
+            })
+            .catch(err => res.status(404).json({message:err}))
+            
+        })
+        .catch(err => res.status(500).json({ message: err}))
+
+};
 
 const deleteUser = (req, res) => {
     const { email } = req.body;
@@ -116,6 +112,7 @@ const allUsers = (req, res) => {
 
 module.exports = {
     register,
+    updateUser,
     login,
     allUsers,
 }

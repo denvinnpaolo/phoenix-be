@@ -4,7 +4,8 @@ const router = express.Router();
 const {
     register,
     login,
-    allUsers, 
+    allUsers,
+    updateUser, 
 } = require('./handlers.js');
 
 const { 
@@ -19,6 +20,7 @@ const {
 
 router.post('/login', validateLogin, login);
 router.post('/register',validateIsEmailTaken,  register);
+router.put('/update', updateUser)
 
 
 

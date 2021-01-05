@@ -52,8 +52,15 @@ const addUser = userObj => {
     )
 };
 
-const updateUser = (email, updatedUser) => {
-    return db('users').where({email}).update(updatedUser, 'id')
+const updateUser = (id, updatedUser) => {
+    // console.log('db -> updateUser -> updatedUser: ', updatedUser)
+    // console.log('db -> updateUser -> id: ', {id})
+
+    return(
+        db('users')
+            .where({id})
+            .update(updatedUser, 'email')
+    )
 }
 
 const deleteUser = filter => {
