@@ -159,7 +159,7 @@ const getAllCanceledByCompanyId = filter => {
 
 // ADDING DATA
 const addWaste = wasteObj => {
-    // console.log('db -> addWaste -> obj: ', wasteObj)
+    console.log('db -> addWaste -> obj: ', wasteObj)
     return db('available')
         .insert(wasteObj)
         .returning('id')
