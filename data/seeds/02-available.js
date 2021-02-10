@@ -9,7 +9,7 @@ exports.seed = function(knex) {
       address: "123 lane st, Los Angeles, CA, USA",
       price: "0.00",
       time_available: "morning",
-      exp: "2021-01-01",
+      exp: "2021-02-15",
       items: "Bag 2 XL, 3 S",
       date_posted: "2021-02-10"
       },
@@ -19,7 +19,7 @@ exports.seed = function(knex) {
         address: "421 ave st, Los Angeles, CA, USA",
         price: "0.00",
         time_available: "afternoon",
-        exp: "2021-01-05",
+        exp: "2021-02-15",
         items: "Bag 2 XL, 3 S",
         date_posted: "2021-02-10"
       },
@@ -29,7 +29,7 @@ exports.seed = function(knex) {
         address: "421 ave st, Los Angeles, CA, USA",
         price: "0.00",
         time_available: "evening",
-        exp: "2021-01-05",
+        exp: "2021-02-15",
         items: "Bag 2 XL, 3 S",
         date_posted: "2021-02-10"
       },        
@@ -39,7 +39,7 @@ exports.seed = function(knex) {
         address: "421 ave st, New York, NY, USA",
         price: "0.00",
         time_available: "afternoon",
-        exp: "2021-01-06",
+        exp: "2021-02-15",
         items: "Bag 2 XL, 3 S",
         date_posted: "2021-02-10"
       },        
@@ -49,7 +49,7 @@ exports.seed = function(knex) {
         address: "421 ave st, Colorado Springs, CO, USA",
         price: "0.00",
         time_available: "morning",
-        exp: "2021-01-06",
+        exp: "2021-02-15",
         items: "Bag 2 XL, 3 S",
         date_posted: "2021-02-10"
       },        
@@ -59,7 +59,7 @@ exports.seed = function(knex) {
         address: "421 ave st, Louieville, KY, USA",
         price: "0.00",
         time_available: "afternoon",
-        exp: "2021-01-06",
+        exp: "2021-02-15",
         items: "Bag 2 XL, 3 S",
         date_posted: "2021-02-10"
       },        
@@ -69,7 +69,7 @@ exports.seed = function(knex) {
         address: "421 ave st, Tucson, AZ, USA",
         price: "0.00",
         time_available: "afternoon",
-        exp: "2020-12-28",
+        exp: "2021-02-15",
         items: "Bag 2 XL, 3 S",
         date_posted: "2021-02-10"
       },        
@@ -79,7 +79,7 @@ exports.seed = function(knex) {
         address: "421 ave st, Las Vegas, NV, USA",
         price: "0.00",
         time_available: "morning",
-        exp: "2020-12-30",
+        exp: "2021-02-15",
         items: "Bag 2 XL, 3 S",
         date_posted: "2021-02-10"
       },        
@@ -89,7 +89,7 @@ exports.seed = function(knex) {
         address: "421 ave st, San Francisco, CA, USA",
         price: "0.00",
         time_available: "evening",
-        exp: "2021-01-02",
+        exp: "2021-02-15",
         items: "Bag 2 XL, 3 S",
         date_posted: "2021-02-10"
       },
