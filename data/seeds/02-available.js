@@ -11,7 +11,7 @@ exports.seed = function(knex) {
       time_available: "morning",
       exp: "2021-01-01",
       items: "Bag 2 XL, 3 S",
-      date_posted: "2020-12-28"
+      date_posted: "2021-02-10"
       },
       {
         type: "hotel",
@@ -21,7 +21,7 @@ exports.seed = function(knex) {
         time_available: "afternoon",
         exp: "2021-01-05",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-28"
+        date_posted: "2021-02-10"
       },
       {
         type: "business",
@@ -31,7 +31,7 @@ exports.seed = function(knex) {
         time_available: "evening",
         exp: "2021-01-05",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-28"
+        date_posted: "2021-02-10"
       },        
       {
         type: "hotel",
@@ -41,7 +41,7 @@ exports.seed = function(knex) {
         time_available: "afternoon",
         exp: "2021-01-06",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-28"
+        date_posted: "2021-02-10"
       },        
       {
         type: "hotel",
@@ -51,7 +51,7 @@ exports.seed = function(knex) {
         time_available: "morning",
         exp: "2021-01-06",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-28"
+        date_posted: "2021-02-10"
       },        
       {
         type: "hotel",
@@ -61,7 +61,7 @@ exports.seed = function(knex) {
         time_available: "afternoon",
         exp: "2021-01-06",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-28"
+        date_posted: "2021-02-10"
       },        
       {
         type: "hotel",
@@ -71,7 +71,7 @@ exports.seed = function(knex) {
         time_available: "afternoon",
         exp: "2020-12-28",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-27"
+        date_posted: "2021-02-10"
       },        
       {
         type: "hotel",
@@ -81,7 +81,7 @@ exports.seed = function(knex) {
         time_available: "morning",
         exp: "2020-12-30",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-29"
+        date_posted: "2021-02-10"
       },        
       {
         type: "hotel",
@@ -91,7 +91,7 @@ exports.seed = function(knex) {
         time_available: "evening",
         exp: "2021-01-02",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-29"
+        date_posted: "2021-02-10"
       },
 
       {
@@ -102,7 +102,7 @@ exports.seed = function(knex) {
         time_available: "morning",
         exp: "2021-01-10",
         items: "Bag 2 XL, 3 S",
-        date_posted: "2020-12-29"},
+        date_posted: "2021-02-10"},
         {
           type: "hotel",
           producer_id: 2,
@@ -111,7 +111,7 @@ exports.seed = function(knex) {
           time_available: "afternoon",
           exp: "2021-01-01",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-29"
+          date_posted: "2021-02-10"
         },
         {
           type: "business",
@@ -121,7 +121,7 @@ exports.seed = function(knex) {
           time_available: "evening",
           exp: "2021-01-06",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-29"
+          date_posted: "2021-02-10"
         },        
         {
           type: "hotel",
@@ -131,7 +131,7 @@ exports.seed = function(knex) {
           time_available: "afternoon",
           exp: "2021-01-03",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-29"
+          date_posted: "2021-02-10"
         },        
         {
           type: "hotel",
@@ -139,9 +139,9 @@ exports.seed = function(knex) {
           address: "421 ave st, Colorado Springs, CO, USA",
           price: "0.00",
           time_available: "morning",
-          exp: "2021-01-04",
+          exp: "2021-02-15",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-29"
+          date_posted: "2021-02-109"
         },        
         {
           type: "hotel",
@@ -149,9 +149,9 @@ exports.seed = function(knex) {
           address: "421 ave st, Louieville, KY, USA",
           price: "0.00",
           time_available: "afternoon",
-          exp: "2021-01-10",
+          exp: "2021-02-15",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-29"
+          date_posted: "2021-02-10"
         },        
         {
           type: "hotel",
@@ -159,9 +159,9 @@ exports.seed = function(knex) {
           address: "421 ave st, Tucson, AZ, USA",
           price: "0.00",
           time_available: "afternoon",
-          exp: "2021-01-06",
+          exp: "2021-02-15",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-29"
+          date_posted: "2021-02-10"
         },        
         {
           type: "hotel",
@@ -169,9 +169,9 @@ exports.seed = function(knex) {
           address: "421 ave st, Las Vegas, NV, USA",
           price: "0.00",
           time_available: "morning",
-          exp: "2021-01-07",
+          exp: "2021-02-15",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-29"
+          date_posted: "2021-02-10"
         },        
         {
           type: "hotel",
@@ -179,9 +179,9 @@ exports.seed = function(knex) {
           address: "421 ave st, San Francisco, CA, USA",
           price: "0.00",
           time_available: "evening",
-          exp: "2020-12-28",
+          exp: "2021-02-15",
           items: "Bag 2 XL, 3 S",
-          date_posted: "2020-12-25"
+          date_posted: "2021-02-10"
         }
       ]);
 };
